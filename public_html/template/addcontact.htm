@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+  
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="contactlist.php">聯絡人基本資料管理</a></li>
+              <li class="crumb-link"> 添加聯絡人基本資料</li>
+            </ol><br>
+			<br>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">聯絡人基本資料添加</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+               <form id="form-wizard" method="post" action="">
+			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 聯絡人基本資料</h4>
+                  <section class="wizard-section">
+                    <div class="section">										
+						<label for="name" class="field-label col-md-2 text-right">聯絡人名稱</label>
+						<div class= "section col-md-10">
+							<label for="name" class="field prepend-icon">
+							<input id="name" type="text" name="name"   class="gui-input" placeholder="聯絡人名稱(必填)">
+							<label for="name" class="field-icon"><i class="fa fa-user"></i></label>
+							</label>
+						</div>
+                    </div>
+                    
+                    <div class="section">
+						<label for="tel1" class="field-label col-md-2 text-right">電話</label>
+						<div class="section col-md-10" >
+						  <label for="tel1" class="field prepend-icon ">
+							<input id="tel1" type="text" name="tel1" class="gui-input" placeholder="02-88888888(必填)">
+							<label for="tel1" class="field-icon"><i class="fa fa-phone"></i></label>
+						  </label>				
+						</div>
+                    </div>
+					
+					<div class="section">
+                      <label for="tel2" class="field-label col-md-2 text-right">行動電話</label>
+					  <div class="section col-md-10" >
+                      <label for="tel2" class="field prepend-icon">
+                        <input id="tel2" type="text" name="tel2" class="gui-input" placeholder="0901234567">
+                        <label for="tel2" class="field-icon"><i class="fa fa-mobile-phone"></i></label>
+                      </label>
+					  </div>
+                    </div>   
+					
+					<div class="section">
+                      <label for="tel3" class="field-label col-md-2 text-right">電話2</label>
+					  <div class="section col-md-10" >
+                      <label for="tel3" class="field prepend-icon">
+                        <input id="tel3" type="text" name="tel3" class="gui-input" placeholder="02-88888888">
+                        <label for="tel3" class="field-icon"><i class="fa fa-phone"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					<div class="section">
+                      <label for="fax1" class="field-label col-md-2 text-right">傳真1</label>
+					  <div class="section col-md-10" >
+                      <label for="fax1" class="field prepend-icon">
+                        <input id="fax1" type="text" name="fax1" class="gui-input" placeholder="02-88888888">
+                        <label for="fax1" class="field-icon"><i class="fa fa-phone"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					<div class="section">
+                      <label for="fax2" class="field-label col-md-2 text-right">傳真2</label>
+					  <div class="section col-md-10" >
+                      <label for="fax2" class="field prepend-icon">
+                        <input id="fax2" type="text" name="fax2" class="gui-input" placeholder="02-88888888">
+                        <label for="fax2" class="field-icon"><i class="fa fa-phone"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					<div class="section">
+                      <label for="email" class="field-label col-md-2 text-right">Email</label>
+					  <div class="section col-md-10" >
+                      <label for="email" class="field prepend-icon">
+                        <input id="email" type="text" name="email" class="gui-input" placeholder="abc@123.com">
+                        <label for="email" class="field-icon"><i class="fa fa-envelope-o"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					 <div class="section">
+                      <label for="address1" class="field-label col-md-2 text-right">聯絡地址1</label>
+					  <div class="section col-md-10" >
+                      <label for="address1" class="field prepend-icon">
+                        <input id="address1" type="text" name="address1" class="gui-input" placeholder="聯絡地址">
+                        <label for="address1" class="field-icon"><i class="fa fa-building-o"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					 <div class="section">
+                      <label for="address2" class="field-label col-md-2 text-right">聯絡地址2</label>
+					  <div class="section col-md-10" >
+                      <label for="address2" class="field prepend-icon">
+                        <input id="address2" type="text" name="address2" class="gui-input" placeholder="聯絡地址">
+                        <label for="address2" class="field-icon"><i class="fa fa-building-o"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					<div class="section">
+                      <label for="sex" class="field-label col-md-2 text-right">性別</label>
+
+                      <div class="option-group section field col-md-10">
+                          <label for="sex1" class="block mt15 option option-primary">
+                            <input id="sex1" name="sex" value="F" type="radio" checked><span class="radio"></span>女
+                          </label>
+                          <label for="sex2" class="block mt15 option option-primary">
+                            <input id="sex2" name="sex" value="M" type="radio"><span class="radio"></span> 男
+                          </label>
+                          </div>  
+                        </div>
+                    <div class="section">
+                      <label for="birthday" class="field-label col-md-2 text-right">生日</label>
+					  <div class="section col-md-10" >
+                      <label for="birthday" class="field prepend-icon">					
+                        <input id="birthday" type="text" name="birthday"  maxlength="10" placeholder="1900/01/01" class="form-control date" value="">
+                        <label for="birthday" class="field-icon"><i class="fa fa-calendar"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					<div class="section">
+                      <label for="idnum" class="field-label col-md-2 text-right">身分證字號</label>
+					  <div class="section col-md-10" >
+                      <label for="idnum" class="field prepend-icon">
+                        <input id="idnum" type="text" name="idnum" class="gui-input" placeholder="身分證字號">
+                        <label for="idnum" class="field-icon"><i class="fa fa-certificate"></i></label>
+                      </label>
+					  </div>
+                    </div>
+                    <div class="section">
+					  <label for="valid" class="field-label col-md-2 text-right">是否有效</label>
+					    <div class="option-group field section col-md-10">
+                          <label for="valid1" class="block mt15 option option-primary">
+                            <input id="valid1" name="valid" value="T" type="radio" checked><span class="radio"></span>Y
+                          </label>
+                          <label for="valid2" class="block mt15 option option-primary">
+                            <input id="valid2" name="valid" value="F" type="radio"><span class="radio"></span> N
+                          </label>
+                          </div>  
+                        </div>
+					
+                  </section>
+                  <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				      <input name="act" type="hidden" id="act" value="add" />
+					  <li>&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn btn-info" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn btn-info" value="保存並返回列表" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+    <!--#include file="footer.htm"-->  
+ <script type="text/javascript">
+      jQuery(document).ready(function () {		 
+        $.validator.methods.smartCaptcha = function (value, element, param) {
+          return value == param;
+        };
+        $("#form-wizard").validate({
+          /* @validation states + elements
+           ------------------------------------------- */
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          /* @validation rules
+           ------------------------------------------ */
+          rules: {
+            name: {
+              required: true
+            },
+            tel1: {
+              require_from_group: [1, ".gui-input"]
+            }
+          },
+          /* @validation error messages
+           ---------------------------------------------- */
+          messages: {
+            name: {
+              required: '請輸入姓名!'
+            },            
+			tel1: {
+               require_from_group: '請輸入電話1!'
+            }       			
+          }
+        });
+		 $('.date').mask('9999/99/99');
+      });
+	  
+    </script>		
+    </body>
+</html>
