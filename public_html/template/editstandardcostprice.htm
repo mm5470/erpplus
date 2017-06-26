@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+  
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="standardcostprice.php">模板標準成本單價</a></li>
+              <li class="crumb-link">編輯模板標準成本單價</li>
+            </ol>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">模板標準成本單價編輯</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+              <form id="form-wizard" method="post" action="">			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 標準成本單價</h4>
+                 <section class="wizard-section">
+                      <div class="section">
+                      <label for="name" class="field-label">標準成本單價名稱</label>
+                      <label for="name" class="field prepend-icon">
+                        <input id="name" type="text" name="name" class="gui-input" value="{rs['name']}">
+                        <label for="name" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>                                  
+                     <div class="section">
+                      <label for="unit" class="field-label">單位</label>
+                      <label for="unit" class="field prepend-icon">
+                        <input id="unit" type="text" name="unit" class="gui-input" value="{rs['unit']}">
+                        <label for="unit" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					   <div class="section">
+                      <label for="price" class="field-label">標準單價</label>
+                      <label for="price" class="field prepend-icon">
+                        <input id="price" type="text" name="price" class="gui-input" value="{rs['price']}">
+                        <label for="price" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					 
+					<div class="section">
+                      <label for="memo" class="field-label">備註</label>
+                      <label for="memo" class="field prepend-icon">
+                        <textarea name="memo" class="textarea-grow" id="memo">{rs['memo']}</textarea>
+                        <label for="tel2" class="field-icon"><i class="fa frame"></i></label>
+                      </label>
+                    </div> 
+					
+                  </section>
+                 <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				     <input name="act" type="hidden" id="act" value="edit" />
+					    <input name="id" type="hidden" value="{rs['id']}">
+					  <li>&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存并返回列表" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+    <!--#include file="footer.htm"-->   
+<script type="text/javascript">
+      jQuery(document).ready(function () {		 
+        $.validator.methods.smartCaptcha = function (value, element, param) {
+          return value == param;
+        };
+        $("#form-wizard").validate({
+          /* @validation states + elements
+           ------------------------------------------- */
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          /* @validation rules
+           ------------------------------------------ */
+          rules:{
+            
+            name: {
+              required: true
+            },
+			unit:{
+              required: true
+            },
+            price:{
+              required: true
+            }
+          },
+          /* @validation error messages
+           ---------------------------------------------- */
+          messages:{
+           
+            name:{
+              required: '請輸入標準成本單價名稱!'
+            },
+			unit:{
+              required: '請輸入單位!'
+            },
+            price:{
+               required: '請輸入標準單價!'
+            }
+			
+          }
+        });		 
+      });
+	  
+    </script>	
+    </body>
+</html>

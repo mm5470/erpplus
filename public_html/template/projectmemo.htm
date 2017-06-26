@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+	<script src="plugins/jquery-1.3.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+    <script type="text/javascript"> 
+ 
+    function howtodo()
+		 {
+			 if(!window.confirm("確認刪除！"))
+			 {
+				 return false;
+			 }else
+			 {
+			  document.form1.submit();
+			 }
+		 }
+
+	
+</script> 
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+        <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="projectmemo.php">專案重要備註</a></li>
+              <li class="crumb-trail">專案重要備註管理</li>
+			  <li class="crumb-link"> <input name="btnadd"  class="addbtn"type="button" value="添加重要備註"  onclick="javascript:location.href='addprojectmemo.php';"/></li>
+           
+            </ol>
+          </div>
+        
+        </header>
+         
+        <div class="panel-body pn">
+              <form action="" method="post" name="form1">     
+			  <table id="message-table" class="table admin-form theme-warning tc-checkbox-1">
+               <tr>
+    <th class="w50">操作</th>
+   <th class="w150">專案編號</th>
+   <th class="w250">專案名稱</th>
+    <th class="w250">重要備註</th>
+	 <th class="w250">最後修改人</th>
+     <th>是否有效</th>
+	 <th class="text-right">刪除</th>
+           </tr>
+                          </thead>
+						   <tbody>
+                 
+     <!--$projectmemo_list as $nl-->
+  <tr >
+    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="編輯"  onclick="location.href='editprojectmemo.php?id={nl['id']}&page={page}'"/></td>
+   <td>{nl['projectnum']}&nbsp;</td>
+    <td class="va-m fw600 text-muted">{nl['projectname']}</td>
+    <td class="va-m fw600 text-muted">{nl['memo']}</td>
+	<td >{nl['lastrevision']}</td>
+    <td>{nl['valid']}&nbsp;</td>
+	 <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='projectmemo.php?act=del&id={nl['id']}'"/></td>
+    </tr>  
+  <!--end-->
+       </tbody>
+       
+        <tr ><td colspan="5" align="right">{pageinfo} </td></tr>
+</table></form>
+       </section>     
+    <!--#include file="footer.htm"-->    
+    </body>
+</html>

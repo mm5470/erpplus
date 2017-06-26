@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+  
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="employeelist.php">員工清單</a></li>
+              <li class="crumb-link"> 編輯員工资料</li>
+            </ol>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">員工资料編輯</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+              <form id="form-wizard" method="post" action="">			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 群組资讯</h4>
+                 <section class="wizard-section">
+				  <div class="section">
+                      <label for="userid" class="field-label">員工ID</label>
+                      <label for="userid" class="field prepend-icon">
+                        <input id="userid" type="text" name="userid" class="gui-input" value="{rs['userid']}">
+                        <label for="userid" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>  
+                     <div class="section">
+                      <label for="username" class="field-label">帳號</label>
+                      <label for="username" class="field prepend-icon">
+                        <input id="username" type="text" name="username" class="gui-input" value="{rs['username']}">
+                        <label for="username" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>                 
+                     <div class="section">
+                      <label for="cnname" class="field-label">姓名</label>
+                      <label for="cnname" class="field prepend-icon">
+                        <input id="cnname" type="text" name="cnname" class="gui-input" value="{rs['cnname']}">
+                        <label for="cnname" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					 <div class="section">
+                      <label for="password" class="field-label">密碼</label>
+                      <label for="password" class="field prepend-icon">
+                        <input id="password" type="text" name="password" class="gui-input" value="{rs['password']}">
+                        <label for="password" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>  
+                     <div class="section">
+                      <label for="email" class="field-label">Email</label>
+                      <label for="email" class="field prepend-icon">
+                        <input id="email" type="text" name="email" class="gui-input" value="{rs['email']}">
+                        <label for="email" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>                 
+                     <div class="section">
+                      <label for="phone" class="field-label">手機</label>
+                      <label for="phone" class="field prepend-icon">
+                        <input id="phone" type="text" name="phone" class="gui-input" value="{rs['phone']}">
+                        <label for="phone" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					  <div class="section">
+                      <label for="birthday" class="field-label">生日</label>
+					  <div class="form-group" style="width:300px;">   
+                        <div id="birthday" class="input-group date" >
+                          <input id="birthday" type="text" name="birthday" placeholder="1900/01/01" class="form-control date" value="{rs['birthday']}"><span class="input-group-addon cursor" onclick="setday(document.getElementById('birthday'))"><i class="fa fa-calendar"></i></span>
+                        </div>                    
+                    </div>                     
+                    </div>
+					 <div class="section">
+                       <label for="category" class="field-label">職務別</label>
+					 </div>
+					 <div class="section">	   
+					<!--$jobtitle_list AS $ul-->
+					<label>&nbsp;&nbsp;<input name="jobtitle[]" type="checkbox" id="jobtitle{ul['k']}"  value="{ul['id']}" {ul['chk']}/>     
+					 {ul['jobname']} </label>					          
+					 <!--end-->  
+					  </div>
+                    <div class="section">
+                      <label for="open_date" class="field-label">到職日期</label>
+                      <label for="open_date" class="field prepend-icon">
+                        <input id="open_date" type="text" name="open_date" class="gui-input" value="{rs['open_date']}">
+                        <label for="open_date" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>					
+                    
+					  <div class="section">
+					  <label for="open_date" class="field-label">是否有效</label>
+					    <div class="option-group field">
+                               <!--IF[$rs['isopen']=='Y']-->
+							   <label for="isopen1" class="block mt15 option option-primary">
+                            <input id="isopen1" name="isopen" value="Y" type="radio" checked><span class="radio"></span>Y
+                          </label>
+                          <label for="isopen2" class="block mt15 option option-primary">
+                            <input id="isopen2" name="isopen" value="N" type="radio"><span class="radio"></span> N
+                          </label>
+						  <!--ELSE-->
+						   <label for="isopen1" class="block mt15 option option-primary">
+                            <input id="isopen1" name="isopen" value="Y" type="radio" checked><span class="radio"></span>Y
+                          </label>
+                          <label for="isopen2" class="block mt15 option option-primary">
+                            <input id="isopen2" name="isopen" value="N" type="radio"><span class="radio"></span> N
+                          </label>
+						  <!--END-->
+                          </div>  
+                        </div>
+                      
+					 
+					 	<div id="spy5" class="section-divider mv40"><span> 左邊選單群組權限</span></div>
+					
+    
+     <!--$menugroup1_list as $cl1=>$cv1-->
+       <div class="section">
+	           <input name="groupid[]" type="checkbox" id="groupid{cv1['id']}"  value="{cv1['id']}" {cv1['chk']}/> <label>{cv1['groupname']}</label>
+       </div>      
+        <div class="section">	   
+        <!--$cv1['sub'] AS $pro1=>$pr1-->
+        <label>&nbsp;&nbsp;&nbsp; &nbsp;<input name="menuid[]" type="checkbox" id="menu{pr1['id']}"  value="{pr1['id']}" {pr1['chk']}/>     
+         {pr1['menuname']} </label>
+        <!--row:4-->           
+       <!--end-->  
+       </div>  
+        <!--end-->                   
+                    
+                 <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				      <input name="act" type="hidden" id="act" value="edit" />
+					  <input name="id" type="hidden" id="id" value="{rs['id']}" />
+					  <li>&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存並返回列表" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+    <!--#include file="footer.htm"-->  
+<script type="text/javascript">
+      jQuery(document).ready(function () {
+	  /* @date picker
+         ------------------------------------------------------------------ */
+		
+		  $('#open_date').datepicker({
+          prevText: '<i class="fa fa-chevron-left"></i>',
+          nextText: '<i class="fa fa-chevron-right"></i>',
+          showButtonPanel: false,
+          beforeShow: function (input, inst) {
+            var newclass = 'admin-form';
+            var themeClass = $(this).parents('.admin-form').attr('class');
+            var smartpikr = inst.dpDiv.parent();
+            if (!smartpikr.hasClass(themeClass)) {
+              inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+            }
+          }
+        });
+
+        
+        $.validator.methods.smartCaptcha = function (value, element, param) {
+          return value == param;
+        };
+        $("#form-wizard").validate({
+          /* @validation states + elements
+           ------------------------------------------- */
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          /* @validation rules
+           ------------------------------------------ */
+          rules: {
+		     userid: {
+              required: true
+            },	
+            
+          username:{
+              required: true
+            },
+			cnname:{
+              required: true
+            },
+			password:{
+              required: true
+            },
+			email: {
+              required: true,
+			  email: true
+            },	
+            
+           phone:{
+              required: true
+            },
+			birthday:{
+              required: true
+            },
+			open_date: {
+              required: true
+            }
+          },
+          /* @validation error messages
+           ---------------------------------------------- */
+          messages: {
+            userid: {
+              required: '請輸入員工ID！'
+            },	
+            
+           username:{
+              required: '請輸入帳號！'
+            },
+			cnname:{
+              required:  '請輸入姓名！'
+            },
+			password: {
+              required: '請輸入密碼！'
+            },	            
+           email:{
+              required: '請輸入Email！'
+            },
+           phone:{
+              required: '請輸入手機！'
+            },			
+           birthday:{
+              required: '請輸入生日！'
+            },
+			open_date:{
+              required: '請輸到職日期！'
+            }
+          }
+        });
+		  $('.date').mask('9999/99/99');
+      });
+	  
+    </script>	
+    </body>
+</html>

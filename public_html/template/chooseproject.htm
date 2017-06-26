@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>挑選單位名稱</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+	<script src="plugins/jquery-1.3.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+   <script type="text/javascript">  
+   function searchform()
+	 {
+		 $("#searchget").load("chooseproject.php?getid={getid}&getname={getname}&searchtitle="+encodeURIComponent($("#searchtitle").val())+"&searchnum="+encodeURIComponent($("#searchnum").val())+"&n="+Math.random()+" #searchget");	
+	}
+   function getopenervalue(val1,val2)
+   {    
+     // window.alert(val1);   
+      window.opener.$("#{getid}").val(val1);
+	  window.opener.$("#{getname}").val(val2);
+	  window.close();
+   }	
+
+ </script> 
+ </head>
+
+  <body class="boxed-layout sb-top">
+  
+    <div id="main">
+<div class="row">
+            <div class="col-md-8">
+              <div class="panel">
+            
+         <div class="panel-footer">
+          專案名稱：
+           <input name="searchtitle" type="text" id="searchtitle" size="12" prdt="16"/>
+		  專案編號:<input name="searchnum" type="text" id="searchnum" size="12" prdt="16"/>
+			<input name="btnserch" id="btnserch1" type="button" class="button btn-primary"  value="搜尋" onclick="javascript:searchform()" />
+</div> 
+              </div>
+            </div>	
+  
+  <div id="searchget">	   
+    <div id="invoice-table" class="row">
+                <div class="col-md-12">
+                  <div class="table-responsive">
+                    <table class="table table-striped">       
+              <form action="" method="post" name="form1">     
+			  <table  class="table">
+             <thead> 
+			 <tr>
+      <th class="w50">序號</th>
+	 <th class="w100">專案編號</th>
+    <th class="w250">專案名稱</th>
+     <th class="w150">地址</th>
+     <th class="w50">挑選</th>
+           </tr>
+                          </thead>
+						   <tbody>
+                 
+      <!--$project_list as $nl-->
+  <tr>
+     <td>{nl['k']}&nbsp;</td>
+    <td>{nl['projectnum']}&nbsp;</td>
+    <td class="va-m fw600 text-muted">{nl['name']}</td>
+    <td>{nl['address']}&nbsp;</td>    
+	 <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="選擇" onclick="javascript:getopenervalue('{nl['projectnum']}','{nl['name']}')" /></td>
+    </tr>  
+  <!--end-->
+       </tbody>
+       
+        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
+</table>
+</form>
+      </div></div> 
+  </div>
+    </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+       <script type="text/javascript"> 
+ 
+    function openwindow(url)
+	{	 
+	 var win=window.open(''+url+'','win','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no,titlebar=no,width=780,height=540,top='+ parseInt((window.screen.height)/2) +',left='+ parseInt((window.screen.width)/3));
+	 win.focus();
+	
+	}
+</script>
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="workitem.php">工項模塊基本資料</a></li>
+              <li class="crumb-link"> 添加工項模塊基本資料</li>
+            </ol>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">工項模塊基本資料添加</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+              <form id="form-wizard" method="post" action="">			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 工項模塊基本資料</h4>
+                
+				<section class="wizard-section">
+				 <div class="section">
+                     <label for="menugroup" class="field-label">系統模塊名稱</label>                      
+                         <input type="hidden" id="systemid" name="systemid">
+                         <input type="text" id="systemname" name="systemname" class="gui-input" style="width:50%" />
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('choosesystem.php?getname=systemname&getid=systemid');"> 挑選</button>
+                      </div>
+                                   
+                     <div class="section">
+                      <label for="itemno" class="field-label">工項模塊編號</label>
+                      <label for="itemno" class="field prepend-icon">
+                        <input id="itemno" type="text" name="itemno" class="gui-input" value="">
+                        <label for="itemno" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>  
+                     <div class="section">
+                      <label for="name" class="field-label">工項模塊名稱</label>
+                      <label for="name" class="field prepend-icon">
+                        <input id="name" type="text" name="name" class="gui-input" value="">
+                        <label for="name" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>  
+                  <div class="section">
+                     <label for="costdriverid" class="field-label">系統工項驅動模式</label>
+                      <label class="field select">
+                         <select id="costdriverid" name="costdriverid">
+						 <option value="" >-----------</option>
+                         <!--$costdriven_list as $bl3-->
+                          <option value="{bl3['id']}" >{bl3['name']}</option>   
+                        <!--end-->
+                        </select><i class="arrow double"></i>
+                           </label> 
+                      </div> 
+					<div class="section">
+					  <label for="driverestimated" class="field-label">是否可驅動推估</label>
+					    <div class="option-group field">
+                          <label for="driverestimated1" class="block mt15 option option-primary">
+                            <input id="driverestimated1" name="driverestimated" value="T" type="radio" ><span class="radio"></span>Y
+                          </label>
+                          <label for="driverestimated2" class="block mt15 option option-primary">
+                            <input id="driverestimated2" name="driverestimated" value="F" type="radio" checked><span class="radio"></span> N
+                          </label>
+                          </div>  
+                        </div>
+						
+                     <div class="section">
+                      <label for="drivermax" class="field-label">成本驅動最大值</label>
+                      <label for="drivermax" class="field prepend-icon">
+                        <input id="drivermax" type="text" name="drivermax" class="gui-input" value="">
+                        <label for="drivermax" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>                 
+                     <div class="section">
+                      <label for="drivermin" class="field-label">成本驅動最小值</label>
+                      <label for="drivermin" class="field prepend-icon">
+                        <input id="drivermin" type="text" name="drivermin" class="gui-input" value="">
+                        <label for="drivermin" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					   <div class="section">
+                      <label for="driverfixed" class="field-label">成本驅動固定值</label>
+                      <label for="driverfixed" class="field prepend-icon">
+                        <input id="driverfixed" type="text" name="driverfixed" class="gui-input" value="">
+                        <label for="driverfixed" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					  <div class="section">
+                      <label for="classvariable" class="field-label">階層變數</label>
+                      <label for="classvariable" class="field prepend-icon">
+                        <input id="classvariable" type="text" name="classvariable" class="gui-input" value="">
+                        <label for="classvariable" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>       					
+                     <div class="section">
+                      <label for="unit" class="field-label">工項模塊單位</label>
+                      <label for="unit" class="field prepend-icon">
+                        <input id="unit" type="text" name="unit" class="gui-input" value="">
+                        <label for="unit" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					   <div class="section">
+                      <label for="qty" class="field-label">工項模塊數量</label>
+                      <label for="qty" class="field prepend-icon">
+                        <input id="qty" type="text" name="qty" class="gui-input" value="">
+                        <label for="qty" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					<div class="section">
+                      <label for="memo" class="field-label">備註</label>
+                      <label for="memo" class="field prepend-icon">
+                        <textarea name="memo" class="textarea-grow" id="memo">{rs['memo']}</textarea>
+                        <label for="tel2" class="field-icon"><i class="fa frame"></i></label>
+                      </label>
+                    </div> 
+					<div class="section">
+					  <label for="valid" class="field-label">是否有效</label>
+					    <div class="option-group field">
+                          <label for="valid1" class="block mt15 option option-primary">
+                            <input id="valid1" name="valid" value="T" type="radio" checked><span class="radio"></span>Y
+                          </label>
+                          <label for="valid2" class="block mt15 option option-primary">
+                            <input id="valid2" name="valid" value="F" type="radio"><span class="radio"></span> N
+                          </label>
+                          </div>  
+                        </div>
+                  </section>
+                 <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				     <input name="act" type="hidden" id="act" value="add" />
+					  <li>&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存并返回列表" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+    <!--#include file="footer.htm"--> 
+<script type="text/javascript">
+      jQuery(document).ready(function () {		 
+        $.validator.methods.smartCaptcha = function (value, element, param) {
+          return value == param;
+        };
+        $("#form-wizard").validate({
+          /* @validation states + elements
+           ------------------------------------------- */
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          /* @validation rules
+           ------------------------------------------ */
+          rules:{
+            itemno:{
+              required: true
+            },
+            name: {
+              required: true
+            },
+			unit:{
+              required: true
+            },
+            qty:{
+              required: true
+            }
+          },
+          /* @validation error messages
+           ---------------------------------------------- */
+          messages:{
+            itemno:{
+             required: '請輸入工項模塊編號!'
+            },
+            name:{
+              required: '請輸入工項模塊名稱!'
+            },
+			unit:{
+              required: '請輸入工項模塊單位!'
+            },
+            qty:{
+               required: '請輸入工項模塊數量!'
+            }
+			
+          }
+        });		 
+      });
+	  
+    </script>	
+    </body>
+</html>

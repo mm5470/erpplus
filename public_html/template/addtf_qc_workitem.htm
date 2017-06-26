@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+   <script type="text/javascript">
+  ////////添加一行、删除一行封装方法///////
+  /**
+   * 为table指定行添加一行
+   *
+   * tab 表id
+   * row 行数，如：0->第一行 1->第二行 -2->倒数第二行 -1->最后一行
+   * trHtml 添加行的html代码
+   *
+   */
+  function addTr(tab, row, trHtml){
+     //获取table最后一行 $("#tab tr:last")
+     //获取table第一行 $("#tab tr").eq(0)
+     //获取table倒数第二行 $("#tab tr").eq(-2)
+     var $tr=$("#"+tab+" tr").eq(row);
+     if($tr.size()==0){
+        alert("指定的table id或行数不存在！");
+        return;
+     }
+     $tr.after(trHtml);
+  }
+   
+  function getDel(k){
+    $(k).parent().remove();     
+}
+   
+  function addTr2(tab, row){
+    var trHtml='<tr><td><b>&nbsp;</b></td><td><input name="workitem_id[]" type="hidden" value="" /><input name="workitemname[]" type="text" value="" /></td><td><input name="qty[]"  type="text" class="txt_input" value="" /></td><td><input name="unit[]" type="text" class="txt_input" value=""  /></td><td><input name="price[]"  type="text" class="txt_input" value="" /></td><td class="text-right pr10"><input name="total[]"  type="text" class="txt_input" value=""   /></td><td onClick="getDel(this)"><a href="#">删除</a></td></tr>';
+    addTr(tab, row, trHtml);
+  }   
+  </script>
+ 
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="tf_qclist.php">報價單表身</a></li>
+              <li class="crumb-link"> 添加報價單表身-系統->工項</li>
+            </ol>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">報價單表身-系統->工項-添加</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+              <form id="form-wizard" method="post" action="">			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 報價單表身-系統->工項</h4>
+				  
+				     <section id="content">
+          <div class="panel invoice-panel">
+            <div class="panel-heading"><span class="panel-title">報價單編號：{qc_no}</span>
+             </div>
+            <div id="invoice-item" class="panel-body p20">
+              <div class="col-md-12">
+                <div class="col-md-4">
+                  <div class="pull-left">
+                    <h5 class="mn">專案名稱：{rs['projectname']}</h5>
+                    <h5 class="th">類別名稱： {rs['class_name']}</h5>		
+                    <h5 class="th">系統名稱： {rs['system_name']}</h5>					
+                   </div>
+                </div>               
+              </div>
+                <div id="invoice-table" class="row">
+                <div class="col-md-12">
+                  <div class="table-responsive"  >
+                    <table class="table table-striped" id="tab" >
+                      <thead>
+					    <tr> <th colspan="7"><input name="input" type="button" class="btn" value="新增工項"  onclick="addTr2('tab', -1)"/></th></tr>
+                        <tr>
+                          <th>#</th>
+                          <th>工項名稱</th>
+                          <th>數量</th>
+                          <th style="width: 135px;">單位</th>
+                          <th>單價</th>
+                          <th class="text-right pr10" >小計</th>
+<th>#</th>						  
+                        </tr>
+                      </thead>
+                      <tbody>					 
+					    <!--$workitem_list as $wl1-->
+                        <tr>
+                          <td><b>{wl1['k']}</b></td>
+                          <td><input name="workitem_id[]" type="hidden" value="{wl1['id']}" id="workitem_id{wl1['k']}"/>
+                         <input name="workitemname[]" type="text" value="{wl1['name']}" id="workitemname{wl1['k']}" value="{wl1['name']}"/></td>
+                          <td><input name="qty[]" id="qty{wl1['k']}" type="text" class="txt_input" value="{wl1['qty']}"  onblur="calltotal({wl1['k']});"  /></td>
+                          <td><input name="unit[]" id="unit{wl1['k']}" type="text" class="txt_input" value="{wl1['unit']}"  /></td>
+                          <td><input name="price[]" id="price{wl1['k']}" type="text" class="txt_input" value="{wl1['price']}" onblur="calltotal({wl1['k']});"    /></td>
+                          <td class="text-right pr10"><input name="total[]" id="total{wl1['k']}" type="text" class="txt_input" value="{wl1['total']}"   /></td>
+                          <td onClick="getDel(this)"><a href="#">删除</a></td>
+						</tr>
+						<!--end--> 
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+             <div id="invoice-footer" class="row">
+                <div class="col-md-12">
+                  <div class="pull-left mt20 fs15 text-primary"> 是否推算 <input id="valid1" name="valid" value="T" type="radio" checked>Y <input id="valid2" name="valid" value="F" type="radio"> N</div>
+                  
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        </section>
+                 <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				     <input name="act" type="hidden" id="act" value="add" />
+					  <li>{InsertSQL}&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="下一步(添加報價單表身-工項)" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+    <!--#include file="footer.htm"-->   
+<script type="text/javascript">
+ 
+function calltotal(id)
+{
+/*计算单个的价格*/
+var quantity=document.getElementById("qty"+id).value;
+var price=document.getElementById("price"+id).value;
+var smallTotal=quantity*price;
+var smallT=document.getElementById("total"+id);
+smallT.value=smallTotal;
+}
+</script>	
+    </body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+     <script type="text/javascript"> 
+ 
+    function openwindow(url)
+	{	 
+	 var win=window.open(''+url+'','win','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no,titlebar=no,width=780,height=540,top='+ parseInt((window.screen.height)/2) +',left='+ parseInt((window.screen.width)/3));
+	 win.focus();
+	
+	}
+</script>
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="projectstatus.php">專案狀態管理</a></li>
+              <li class="crumb-link"> 編輯專案狀態</li>
+            </ol><br>
+<br>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">專案狀態編輯</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+               <form id="form-wizard" method="post" action="">
+			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 專案狀態</h4>
+                  <section class="wizard-section">
+                  
+                   <div class="section">
+                     <label for="menugroup" class="field-label">專案名稱</label>                      
+                         <input type="hidden" id="projectnum" name="projectnum" value="{rs['projectnum']}">
+                         <input type="text" id="projectname" name="projectname" class="gui-input" style="width:50%" value="{rsproject['name']}"/>
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('chooseproject.php?getname=projectname&getid=projectnum');"> 挑選</button>
+                      </div>
+                      <div class="section">
+                     <label for="menugroup" class="field-label">階段或屬性</label>
+                                          
+                         <input type="text" id="status" name="status" class="gui-input" style="width:50%" placeholder="自行輸入/挑選階段或屬性" value="{rs['status']}"/>
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('choosestatus.php?getname=status');"> 挑選</button>
+                      </div>
+					<div class="section">
+                     <label for="menugroup" class="field-label">單位1</label>
+                       
+                         <input type="hidden" id="unit1" name="unit1" value="{rs['unit1']}">
+                         <input type="text" id="unitname1" name="unitname1" class="gui-input" style="width:50%;" value="{rsunit1['name']}"/>
+                         <button class="button btn-primary" type="button" onclick="javascript:openwindow('chooseunit.php?getname=unitname1&getid=unit1');"> 挑選</button>
+                      </div>
+					<div class="section">
+                     <label for="menugroup" class="field-label">單位2</label>
+                       
+                         <input type="hidden" id="unit2" name="unit2" value="{rs['unit2']}">
+                         <input type="text" id="unitname2" name="unitname2" class="gui-input" style="width:50%;" value="{rsunit2['name']}"/>
+                         <button class="button btn-primary" type="button" onclick="javascript:openwindow('chooseunit.php?getname=unitname2&getid=unit2');"> 挑選</button>
+                      </div>
+					  <div class="section">
+                     <label for="menugroup" class="field-label">聯絡人1</label>
+                      
+                         <input type="hidden" id="contact1" name="contact1" value="{rs['contact1']}">
+                         <input type="text" id="contactname1" name="contactname1" class="gui-input" style="width:50%" value="{rscontact1['name']}"/>
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('choosecontact.php?getid=contact1&getname=contactname1');"> 挑選</button>
+                      </div>
+					<div class="section">
+                     <label for="menugroup" class="field-label">聯絡人2</label>
+                      
+                         <input type="hidden" id="contact2" name="contact2" value="{rs['contact2']}">
+                         <input type="text" id="contactname2" name="contactname2" class="gui-input" style="width:50%" value="{rscontact2['name']}"/>
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('choosecontact.php?getid=contact2&getname=contactname2');"> 挑選</button>
+                      </div>
+					    <div class="section">
+                     <label for="menugroup" class="field-label">聯絡人3</label>
+                      
+                         <input type="hidden" id="contact3" name="contact3" value="{rs['contact3']}">
+                         <input type="text" id="contactname3" name="contactname3" class="gui-input" style="width:50%" value="{rscontact3['name']}"/>
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('choosecontact.php?getid=contact3&getname=contactname3');"> 挑選</button>
+                      </div>
+					 				
+					<div class="section">
+                      <label for="statusstartdate" class="field-label">階段有效開始日</label>
+                      <label for="statusstartdate" class="field prepend-icon">
+                        <input id="statusstartdate" type="text" name="statusstartdate" class="gui-input" value="{rs['statusstartdate']}">
+                        <label for="statusstartdate" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					<div class="section">
+                      <label for="statusenddate" class="field-label">階段有效結束日</label>
+                      <label for="statusenddate" class="field prepend-icon">
+                        <input id="statusenddate" type="text" name="statusenddate" class="gui-input" value="{rs['statusenddate']}">
+                        <label for="statusenddate" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+                    </div>
+					
+                     <div class="section">
+					  <label for="valid" class="field-label">是否有效</label>
+					    <div class="option-group field">
+                           <!--IF[$rs['valid']=='T']-->
+                          <label for="valid1" class="block mt15 option option-primary">
+                            <input id="valid1" name="valid" value="T" type="radio" checked><span class="radio"></span>Y
+                          </label>
+                          <label for="valid2" class="block mt15 option option-primary">
+                            <input id="valid2" name="valid" value="F" type="radio"><span class="radio"></span> N
+                          </label>
+                          <!--ELSE-->  <label for="valid1" class="block mt15 option option-primary">
+                            <input id="valid1" name="valid" value="T" type="radio" ><span class="radio"></span>Y
+                          </label>
+                          <label for="valid2" class="block mt15 option option-primary">
+                            <input id="valid2" name="valid" value="F" type="radio" checked><span class="radio"></span> N
+                          </label><!--END-->
+                          </div>  
+                        </div>
+					
+                  </section>
+                  <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				      <input name="act" type="hidden" id="act" value="edit" />
+					  <input name="id" type="hidden" id="id" value="{rs['id']}" />
+					  <li>&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存并返回列表" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+        <!--#include file="footer.htm"--> 
+		<script type="text/javascript">
+      jQuery(document).ready(function () {
+	  /* @date picker
+         ------------------------------------------------------------------ */
+		
+		  $('#statusstartdate').datepicker({
+          prevText: '<i class="fa fa-chevron-left"></i>',
+          nextText: '<i class="fa fa-chevron-right"></i>',
+          showButtonPanel: false,
+          beforeShow: function (input, inst) {
+            var newclass = 'admin-form';
+            var themeClass = $(this).parents('.admin-form').attr('class');
+            var smartpikr = inst.dpDiv.parent();
+            if (!smartpikr.hasClass(themeClass)) {
+              inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+            }
+          }
+        });
+
+        $("#statusenddate").datepicker({
+          prevText: '<i class="fa fa-chevron-left"></i>',
+          nextText: '<i class="fa fa-chevron-right"></i>',
+          showButtonPanel: false,
+          beforeShow: function (input, inst) {
+            var newclass = 'admin-form';
+            var themeClass = $(this).parents('.admin-form').attr('class');
+            var smartpikr = inst.dpDiv.parent();
+            if (!smartpikr.hasClass(themeClass)) {
+              inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+            }
+          }
+        });
+        $.validator.methods.smartCaptcha = function (value, element, param) {
+          return value == param;
+        };
+        $("#form-wizard").validate({
+          /* @validation states + elements
+           ------------------------------------------- */
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          /* @validation rules
+           ------------------------------------------ */
+          rules: {
+		      status: {
+              required: true
+            },	
+            
+           unit1:{
+              required: true
+            },
+			contact1:{
+              required: true
+            },
+			statusstartdate:{
+              required: true
+            },
+			statusenddate:{
+              required: true
+            }
+          },
+          /* @validation error messages
+           ---------------------------------------------- */
+          messages: {
+            status: {
+              required: '請輸入狀態或屬性！'
+            },	
+            
+           unit1:{
+              required: '請選擇單位！'
+            },
+			contact1:{
+              required: '請選擇聯絡人！'
+            },
+			statusstartdate:{
+              required: '請輸入階段有效開始日！'
+            },
+			statusenddate:{
+              required: '請輸入階段有效結束日！'
+            }
+          }
+        });
+		 
+      });
+	  
+    </script>
+    </body>
+</html>

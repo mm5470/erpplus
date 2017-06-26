@@ -1,0 +1,44 @@
+    <!-- core scripts-->
+    <script src="plugins/core.min.js"></script>
+    <!-- AdminForms JS-->
+    <script src="assets/admin-tools/admin-forms/js/jquery-ui-monthpicker.min.js"></script>
+    <script src="assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
+    <!-- jQuery Validate Plugin-->
+    <script src="assets/admin-tools/admin-forms/js/jquery.validate.min.js"></script>
+    <!-- jQuery Validate Addon-->
+    <script src="assets/admin-tools/admin-forms/js/additional-methods.min.js"></script>
+    <!-- Theme Javascript-->
+    <script src="assets/js/utility/utility.js"></script>
+    <script src="assets/js/demo/demo.js"></script>
+    <script src="assets/js/main.js"></script>
+   <script type="text/javascript">
+   	$.datepicker.regional['zh-TW'] = {
+			  closeText: '關閉',
+			  prevText: '&#x3c;上月',
+			  nextText: '下月&#x3e;',
+			  currentText: '今天',
+			  monthNames: ['一月','二月','三月','四月','五月','六月',
+				'七月','八月','九月','十月','十一月','十二月'],
+			  monthNamesShort: ['一','二','三','四','五','六',
+				'七','八','九','十','十一','十二'],
+			  dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+			  dayNamesShort: ['週日','週一','週二','週三','週四','週五','週六'],
+			  dayNamesMin: ['日','一','二','三','四','五','六'],
+			  weekHeader: '週',
+			  dateFormat: 'yy-mm-dd',
+			  firstDay: 1,
+			  isRTL: false,
+			   
+			  showMonthAfterYear: true,
+			  changeYear: true,
+			  yearRange: '1950:2020',
+			  yearSuffix: '年'};
+			  $.datepicker.setDefaults($.datepicker.regional['zh-TW']);
+		 
+   "use strict";
+        // Init Theme Core
+        Demo.init();
+// Init Theme Core
+Core.init();
+demoHighCharts.init();
+ runVectorMaps();</script>

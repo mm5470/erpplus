@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+  
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+        <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="menugroup.php">菜單群組管理</a></li>
+              <li class="crumb-link"> <input name="btnadd"  class="addbtn"type="button" value="添加菜單群組"  onclick="javascript:location.href='addmenugroup.php';"/></li>
+            </ol>
+          </div>
+        
+        </header>
+         
+        <div class="panel-body pn">
+       
+              <form action="" method="post" name="form1"> 
+ <div class="p15 pt5 mt15 bg-light br-t">
+                        <table data-chart-id="#high-line" class="table mbn admin-form fs13 table-legend">
+                          <thead>
+                            <tr>                            
+							   <th class="w30">操作</th>
+   <th class="w150" >菜單群組名稱</th>
+    <th  class="w150">CSS 樣式名</th>
+    <th >鏈接頁</th>
+     <th >排序</th>
+	 <th class="text-right">刪除</th>
+                           
+                            </tr>
+                          </thead>
+                       
+                            
+	   <tbody>
+    <!--$menustrgroup_list as $ggl-->
+	   <tr>
+                              <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="編輯"  onclick="location.href='editmenugroup.php?id={ggl['id']}'"/></td>
+                              <td>
+                                {ggl['groupname']}&nbsp;
+                              </td>
+                              <td class="va-m fw600 text-muted">{ggl['classnamecss']}</td>
+							  <td class="va-m fw600 text-muted">{ggl['menulink']}</td>
+							  <td class="va-m fw600 text-muted">{ggl['squee']}</td>
+                              <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='menugroup.php?act=del&id={ggl['id']}'"/></td>
+                            </tr>
+ 
+  <!--end-->
+      
+       
+        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
+		</tbody>
+</table></form>
+       </section>     
+    <!--#include file="footer.htm"-->    
+    </body>
+</html>

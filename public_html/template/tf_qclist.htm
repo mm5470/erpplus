@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+	<script src="plugins/jquery-1.3.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+    <script type="text/javascript"> 
+ 
+    function howtodo()
+		 {
+			 if(!window.confirm("確認刪除！"))
+			 {
+				 return false;
+			 }else
+			 {
+			  document.form1.submit();
+			 }
+		 }
+
+	
+</script> 
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+        <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="tf_qclist.php">報價單表身</a></li>
+              <li class="crumb-trail">報價單表身管理</li>
+			  <li class="crumb-link"> <input name="btnadd"  class="addbtn"type="button" value="添加報價單表身"  onclick="javascript:location.href='addtf_qc_class.php';"/></li>
+           
+            </ol>
+          </div>
+        
+        </header>
+         
+        <div class="panel-body pn">
+              <form action="" method="post" name="form1">     
+			  <table id="message-table" class="table admin-form theme-warning tc-checkbox-1">
+               <tr>
+    
+   <th class="w250">報價單編號</th>
+   <th class="w250">專案名稱</th>
+    <th class="w250">類別名稱</th>
+    <th class="w250">系統名稱</th>
+	<th class="w300">系統數量</th>
+	<th class="w300">系統小計</th>
+    <th class="text-right">刪除</th>
+           </tr>
+                          </thead>
+						   <tbody>
+                 
+     <!--$tf_qc_list as $nl-->
+  <tr >
+   
+   <td class="fs15 fw600">{nl['qc_no']}&nbsp;</td>
+   <td class="fs15 fw600">{nl['projectname']}&nbsp;</td>
+    <td class="va-m fw600 text-muted">{nl['class_name']}</td>
+    <td class="va-m fw600 text-muted">{nl['systemname']}</td>
+	<td >{nl['qty']}&nbsp;</td>
+    <td>{nl['total']}&nbsp;</td>
+	 <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='tf_qclist.php?act=del&id={nl['id']}'"/></td>
+    </tr>  
+  <!--end-->
+       </tbody>
+       
+        <tr ><td colspan="7" align="right">{pageinfo} </td></tr>
+</table></form>
+       </section>     
+    <!--#include file="footer.htm"-->    
+    </body>
+</html>
