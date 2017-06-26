@@ -49,7 +49,7 @@
                       <label for="name" class="field-label col-md-2">單位名稱</label>
                       <div class="section col-md-10">
                         <label for="name" class="field prepend-icon">
-                          <input id="name" type="text" name="name"   class="gui-input" value="">
+                          <input id="name" type="text" name="name"   class="gui-input" placeholder="單位名稱(必填)">
                           <label for="name" class="field-icon"><i class="fa fa-home"></i></label>
                         </label> 
                       </div>
@@ -60,7 +60,7 @@
                       <label for="address" class="field-label col-md-2">地址</label>
 					  <div class="section col-md-10">
                       <label for="address" class="field prepend-icon">
-                        <input id="address" type="text" name="address" class="gui-input" value="">
+                        <input id="address" type="text" name="address" class="gui-input" placeholder="地址..">
                         <label for="address" class="field-icon"><i class="fa fa-building-o"></i></label>
                       </label>
                     </div>
@@ -70,7 +70,7 @@
                       <label for="tel1" class="field-label col-md-2">電話1</label>
 					  <div class="section col-md-10">
                       <label for="tel1" class="field prepend-icon">
-                        <input id="tel1" type="text" name="tel1" class="gui-input" value="">
+                        <input id="tel1" type="text" name="tel1" class="gui-input" placeholder="電話1">
                         <label for="tel1" class="field-icon"><i class="fa fa-phone"></i></label>
                       </label>
                     </div>
@@ -80,7 +80,7 @@
                       <label for="tel2" class="field-label col-md-2">電話2</label>
 					  <div class="section col-md-10">
                       <label for="tel2" class="field prepend-icon">
-                        <input id="tel2" type="text" name="tel2" class="gui-input" value="">
+                        <input id="tel2" type="text" name="tel2" class="gui-input" placeholder="電話2">
                         <label for="tel2" class="field-icon"><i class="fa fa-phone"></i></label>
                       </label>
                     </div>   
@@ -90,7 +90,7 @@
                       <label for="fax" class="field-label col-md-2">傳真</label>
 					  <div class="section col-md-10">
                       <label for="fax" class="field prepend-icon">
-                        <input id="fax" type="text" name="fax" class="gui-input" value="">
+                        <input id="fax" type="text" name="fax" class="gui-input" placeholder="傳真">
                         <label for="fax" class="field-icon"><i class="fa fa-phone"></i></label>
                       </label>
                     </div>
@@ -100,7 +100,7 @@
                       <label for="serialnumber" class="field-label col-md-2">統一編號</label>
 					  <div class="section col-md-10">
                       <label for="serialnumber" class="field prepend-icon">
-                        <input id="serialnumber" type="text" name="serialnumber" class="gui-input" value="">
+                        <input id="serialnumber" type="text" name="serialnumber" class="gui-input" placeholder="統一編號">
                         <label for="serialnumber" class="field-icon"><i class="fa fa-certificate"></i></label>
                       </label>
                     </div>
@@ -110,7 +110,7 @@
                       <label for="capital" class="field-label col-md-2">資本額</label>
 					  <div class="section col-md-10">
                       <label for="capital" class="field prepend-icon">
-                        <input id="capital" type="text" name="capital" class="gui-input" value="">
+                        <input id="capital" type="text" name="capital" class="gui-input" placeholder="資本額">
                         <label for="capital" class="field-icon"><i class="fa fa-usd"></i></label>
                       </label>
                     </div>
@@ -120,7 +120,7 @@
                       <label for="responsibleperson" class="field-label col-md-2">負責人</label>
 					  <div class="section col-md-10">
                       <label for="responsibleperson" class="field prepend-icon">
-                        <input id="responsibleperson" type="text" name="responsibleperson" class="gui-input" value="">
+                        <input id="responsibleperson" type="text" name="responsibleperson" class="gui-input" placeholder="負責人">
                         <label for="responsibleperson" class="field-icon"><i class="fa fa-user"></i></label>
                       </label>
                     </div>
@@ -130,7 +130,7 @@
                       <label for="requestday" class="field-label col-md-2">請款日</label>
 					  <div class="section col-md-10">
                       <label for="requestday" class="field prepend-icon">
-                        <input id="requestday" type="text" name="requestday" class="gui-input" value="">
+                        <input id="requestday" type="text" name="requestday" class="gui-input" placeholder="請款日(1-30)">
                         <label for="requestday" class="field-icon"><i class="fa fa-exchange"></i></label>
                       </label>
                     </div>
@@ -140,14 +140,14 @@
                       <label for="loanday" class="field-label col-md-2">放款日</label>
 					  <div class="section col-md-10">
                       <label for="loanday" class="field prepend-icon">					
-                        <input id="loanday" type="text" name="loanday"  class="gui-input" value="">
+                        <input id="loanday" type="text" name="loanday"  class="gui-input" placeholder="放款日(1-30)">
                         <label for="loanday" class="field-icon"><i class="fa fa-exchange"></i></label>
                       </label>
                     </div>
 					</div>
 					
 					 <div class="section">
-                       <label for="category" class="field-label">類別</label>
+                       <label for="category" class="field-label">類別(必填)</label>
 					 </div>
 					 <div class="section">	   
 			<!--$unitclass_list AS $ul-->
@@ -173,8 +173,8 @@
 				 <ul role="menu" aria-label="Pagination">
 				      <input name="act" type="hidden" id="act" value="add" />
 					  <li>&nbsp;{alertstr}</li>
-					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
-					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存並返回列表" /></li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn  btn-info" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn  btn-info" value="保存並返回列表" /></li>
 					</ul>
 					</div>
                 </div>
