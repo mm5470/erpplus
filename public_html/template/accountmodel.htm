@@ -39,9 +39,10 @@
             <ol class="breadcrumb">
               <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
               <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
-              <li class="crumb-link"><a href="qc_list.php">報價單</a></li>
-              <li class="crumb-trail">報價單清單</li>
-			  
+              <li class="crumb-link"><a href="accountmodel.php">專案帳款模式管理</a></li>
+              <li class="crumb-trail">專案帳款模式管理</li>
+			  <li class="crumb-link"> <input name="btnadd"  class="addbtn"type="button" value="添加專案帳款模式"  onclick="javascript:location.href='addaccountmodel.php';"/></li>
+           
             </ol>
           </div>
         
@@ -52,30 +53,30 @@
 			  <table id="message-table" class="table admin-form theme-warning tc-checkbox-1">
                <tr>
     <th class="w50">操作</th>
-   <th class="w200">報價單編號</th>
-   <th class="w200">專案名稱</th>   
- <th class="w200">階段</th>   
-	<th class="w300">對象單位</th>	
-	<th class="w300">我方單位</th>
-	
+   <th class="w150">專案編號</th>
+   <th class="w150">專案名稱</th>
+    <th class="w150">款項類別</th>
+    <th class="w150">支付類別</th>
+    <th class="w250">帳款百分比</th>   
+	 <th class="text-right">刪除</th>
            </tr>
                           </thead>
 						   <tbody>
                  
-     <!--$qc_list as $nl-->
+     <!--$accountmodel_list as $nl-->
   <tr >
-    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="列印設定"  onclick="location.href='previewcheck.php?qc_no={nl['qc_no']}'"/></td>
-   <td class="fs15 fw600">{nl['qc_no']}&nbsp;</td>
-    <td class="va-m fw600 text-muted">{nl['projectname']}</td>
-    <td class="va-m fw600 text-muted">{nl['stage']}</td>
-	<td >{nl['unitname']}&nbsp;</td>
-    <td>{nl['ourunitname']}&nbsp;</td>
-
-	  </tr>  
+    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="編輯"  onclick="location.href='editaccountmodel.php?id={nl['id']}&page={page}'"/></td>
+   <td>{nl['projectnum']}&nbsp;</td> 
+    <td>{nl['projectname']}&nbsp;</td>   
+   <td class="va-m fw600 text-muted">{nl['moneycategoryname']}</td>   
+     <td class="va-m fw600 text-muted">{nl['paymentcategoryname']}</td>
+    <td class="va-m fw600 text-muted">{nl['percentage']}%</td>   
+	 <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='accountmodel.php?act=del&id={nl['id']}'"/></td>
+    </tr>  
   <!--end-->
        </tbody>
        
-        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
+        <tr ><td colspan="5" align="right">{pageinfo} </td></tr>
 </table></form>
        </section>     
     <!--#include file="footer.htm"-->    

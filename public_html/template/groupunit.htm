@@ -39,9 +39,10 @@
             <ol class="breadcrumb">
               <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
               <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
-              <li class="crumb-link"><a href="qc_list.php">報價單</a></li>
-              <li class="crumb-trail">報價單清單</li>
-			  
+              <li class="crumb-link"><a href="groupunit.php">原物料群組單位管理</a></li>
+              <li class="crumb-trail">原物料群組單位管理</li>
+			  <li class="crumb-link"> <input name="btnadd"  class="addbtn"type="button" value="添加原物料群組單位"  onclick="javascript:location.href='addgroupunit.php';"/></li>
+           
             </ol>
           </div>
         
@@ -52,30 +53,32 @@
 			  <table id="message-table" class="table admin-form theme-warning tc-checkbox-1">
                <tr>
     <th class="w50">操作</th>
-   <th class="w200">報價單編號</th>
-   <th class="w200">專案名稱</th>   
- <th class="w200">階段</th>   
-	<th class="w300">對象單位</th>	
-	<th class="w300">我方單位</th>
-	
+	 <th class="w150">群組編號</th>
+   <th class="w150">原物料編號</th>
+   <th class="w150">原物料名稱</th>   
+    <th class="w150">單位</th>
+     <th class="w150">換算數量</th>
+      <th class="w250">是否為常用單位	</th>
+	 <th class="text-right">刪除</th>
            </tr>
                           </thead>
 						   <tbody>
                  
-     <!--$qc_list as $nl-->
+     <!--$groupunit_list as $nl-->
   <tr >
-    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="列印設定"  onclick="location.href='previewcheck.php?qc_no={nl['qc_no']}'"/></td>
-   <td class="fs15 fw600">{nl['qc_no']}&nbsp;</td>
-    <td class="va-m fw600 text-muted">{nl['projectname']}</td>
-    <td class="va-m fw600 text-muted">{nl['stage']}</td>
-	<td >{nl['unitname']}&nbsp;</td>
-    <td>{nl['ourunitname']}&nbsp;</td>
-
-	  </tr>  
+    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="編輯"  onclick="location.href='editgroupunit.php?id={nl['id']}&page={page}'"/></td>
+   <td>{nl['groupunitid']}&nbsp;</td> 
+    <td>{nl['productno']}&nbsp;</td> 
+   <td>{nl['productname']}&nbsp;</td>  	
+   <td class="va-m fw600 text-muted">{nl['unit']}</td>   
+     <td class="va-m fw600 text-muted">{nl['reducedqty']}</td>
+    <td class="va-m fw600 text-muted">{nl['iscommon']}</td>   
+	 <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='groupunit.php?act=del&id={nl['id']}'"/></td>
+    </tr>  
   <!--end-->
        </tbody>
        
-        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
+        <tr ><td colspan="5" align="right">{pageinfo} </td></tr>
 </table></form>
        </section>     
     <!--#include file="footer.htm"-->    

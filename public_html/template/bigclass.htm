@@ -34,23 +34,27 @@
         <div class="panel-body pn">
        
               <form action="" method="post" name="form1"> 
-				<div class="p15 pt5 mt15 bg-light br-t">
-                    <table data-chart-id="#high-line" class="table mbn admin-form fs13 table-legend">
-						<thead>
-                          <tr>                            
-							<th class="w30">操作</th>
-							<th class="w150" >原物料大類名稱</th>
-							<th >基本描述</th>
-							<th >排序</th>
-							<th class="text-right">刪除</th>
+ <div class="p15 pt5 mt15 bg-light br-t">
+                        <table data-chart-id="#high-line" class="table mbn admin-form fs13 table-legend">
+                          <thead>
+                            <tr>                            
+							   <th class="w30">操作</th>
+   <th class="w150" >原物料大類名稱</th>
+   <th >基本描述</th>
+     <th >排序</th>
+	 <th class="text-right">刪除</th>
                            
-                           </tr>
-						</thead>          
-						<tbody>
+                            </tr>
+                          </thead>
+                       
+                            
+	   <tbody>
      <!--$bigclass_list as $bigclass1-->
-							<tr>
+	   <tr>
                               <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="編輯"  onclick="location.href='editbigclass.php?id={bigclass1['id']}'"/></td>
-                              <td>{bigclass1['name']}&nbsp;</td>
+                              <td>
+                               {bigclass1['name']}&nbsp;
+                              </td>
                               <td class="va-m fw600 text-muted">{bigclass1['strdescription']}</td>							
 							  <td class="va-m fw600 text-muted">{bigclass1['squee']}</td>
                               <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='bigclass.php?act=del&id={bigclass1['id']}'"/></td>
@@ -59,9 +63,9 @@
   <!--end-->
       
        
-							<tr ><td colspan="6" align="right">{pageinfo} </td></tr>
-						</tbody>
-				</table></form>
+        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
+		</tbody>
+</table></form>
        </section>     
     <!--#include file="footer.htm"-->    
     </body>

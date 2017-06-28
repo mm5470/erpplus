@@ -11,7 +11,8 @@
     <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
     <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
-  <script type="text/javascript"> 
+   <script type="text/javascript"> 
+ 
     function openwindow(url)
 	{	 
 	 var win=window.open(''+url+'','win','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no,titlebar=no,width=780,height=540,top='+ parseInt((window.screen.height)/2) +',left='+ parseInt((window.screen.width)/3));
@@ -31,64 +32,70 @@
             <ol class="breadcrumb">
               <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
               <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
-              <li class="crumb-link"><a href="tf_qclist.php">報價單表身</a></li>
-              <li class="crumb-link"> 添加報價單表身-類別</li>
-            </ol>
+              <li class="crumb-link"><a href="qc_memo.php">報價單備註管理</a></li>
+              <li class="crumb-link"> 編輯報價單備註</li>
+            </ol><br>
+<br>
           </div>         
         </header>         
         <div class="panel-body pn">     
         <section id="content" class="animated fadeIn">         
           <div class="content-header">
-            <h2><b class="text-primary">報價單表身-類別-添加</h2>
+            <h2><b class="text-primary">報價單備註編輯</h2>
             
           </div>
           <div class="mw1000 center-block">
            
             <div class="admin-form">
-              <form id="form-wizard" method="post" action="">			  
+               <form id="form-wizard" method="post" action="">
+			  
                 <div class="wizard steps-bg steps-left">                 
-                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 報價單表身-類別</h4>
-                 <section class="wizard-section">                               
-                      <div class="section">
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 報價單備註</h4>
+                  <section class="wizard-section">
+                  
+                    <div class="section">
                      <label for="qc_no" class="field-label">報價單編號</label> 
-                            <input type="hidden" id="projectnum" name="projectnum">
-                         <input type="text" id="qc_no" name="qc_no" class="gui-input" style="width:50%"/>
+					     <input type="hidden" id="projectnum" name="projectnum" value="{rsproject['projectnum']}">
+                         <input type="text" id="qc_no" name="qc_no" class="gui-input" style="width:50%" value="{rs['qc_no']}"/>
                         <button class="button btn-primary" type="button" onclick="javascript:openwindow('choosemf_qc.php?getname=qc_no&getid=projectnum');"> 挑選</button>
                       </div>
-					 				 
+                     
+                    
                      <div class="section">
-                      <label for="class_no" class="field-label">類別編號</label>
-                      <label for="class_no" class="field prepend-icon">
-                        <input id="class_no" type="text" name="class_no" class="gui-input" value="{strclassno}">
-                        <label for="class_no" class="field-icon"><i class="fa fa-user"></i></label>
-                      </label>
-                    </div>     
-			       <div class="section">
-                      <label for="class_name" class="field-label">類別名稱</label>
-                      <label for="class_name" class="field prepend-icon">
-                        <input id="class_name" type="text" name="class_name" class="gui-input" value="">
-                        <label for="class_name" class="field-icon"><i class="fa fa-user"></i></label>
+                      <label for="memo" class="field-label">重要備註</label>
+                      <label for="memo" class="field prepend-icon">
+                        <textarea name="memo" style="width:500px;height:100px;" id="memo">{rs['memo']}</textarea>
+                        <label for="tel2" class="field-icon"><i class="fa frame"></i></label>
                       </label>
                     </div> 		
-                    
-					<div class="section">
-					  <label for="valid" class="field-label">是否顯示</label>
+					 
+                     <div class="section">
+					  <label for="valid" class="field-label">是否有效</label>
 					    <div class="option-group field">
-                          <label for="valid1" class="block mt15 option option-primary">
+                          <!--IF[$rs['valid']=='T']-->
+                          <label for="valid1" class="mt15 option option-primary">
                             <input id="valid1" name="valid" value="T" type="radio" checked><span class="radio"></span>Y
                           </label>
-                          <label for="valid2" class="block mt15 option option-primary">
+                          <label for="valid2" class="mt15 option option-primary">
                             <input id="valid2" name="valid" value="F" type="radio"><span class="radio"></span> N
                           </label>
+                          <!--ELSE-->  <label for="valid1" class="mt15 option option-primary">
+                            <input id="valid1" name="valid" value="T" type="radio" ><span class="radio"></span>Y
+                          </label>
+                          <label for="valid2" class="mt15 option option-primary">
+                            <input id="valid2" name="valid" value="F" type="radio" checked><span class="radio"></span> N
+                          </label><!--END-->
                           </div>  
                         </div>
+					
                   </section>
-                 <div class="actions clearfix">
+                  <div class="actions clearfix">
 				 <ul role="menu" aria-label="Pagination">
-				     <input name="act" type="hidden" id="act" value="add" />
+				    <input name="act" type="hidden" id="act" value="edit" />
+					  <input name="id" type="hidden" id="id" value="{rs['id']}" />
 					  <li>&nbsp;{alertstr}</li>
 					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
-					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="下一步(添加報價單表身-系統)" /></li>
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存并返回列表" /></li>
 					</ul>
 					</div>
                 </div>
@@ -97,9 +104,9 @@
           </div></div>
         </section>
       </section>    
-    <!--#include file="footer.htm"-->  
-<script type="text/javascript">
-      jQuery(document).ready(function () {		 
+        <!--#include file="footer.htm"--> 
+		<script type="text/javascript">
+      jQuery(document).ready(function () {
         $.validator.methods.smartCaptcha = function (value, element, param) {
           return value == param;
         };
@@ -111,21 +118,28 @@
           errorElement: "em",
           /* @validation rules
            ------------------------------------------ */
-          rules:{
-            class_name:{
+          rules: {
+		    qc_no:{
               required: true
-            }
+            },
+			memo: {
+              required: true
+            } 
           },
           /* @validation error messages
            ---------------------------------------------- */
-          messages:{           
-            class_name:{
-              required: '請輸入類別名稱!'
-            }			
+          messages: {
+		  qc_no:{
+              required: '請挑選報價單號！'
+            }
+           memo: {
+              required: '請輸入報價單備註！'
+            }
           }
-        });		 
+        });
+		 
       });
 	  
-    </script>		
+    </script>
     </body>
 </html>

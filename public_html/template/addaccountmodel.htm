@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<!--dir:assets,jade,plugins,documentation-->
+  <head>  
+    <title>羽駿實業有限公司</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta charset="utf-8">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">  
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
+      <script type="text/javascript"> 
+    function openwindow(url)
+	{	 
+	 var win=window.open(''+url+'','win','toolbar=no,location=no,directories=no,status=no, menubar=no,scrollbars=no,resizable=no,titlebar=no,width=780,height=540,top='+ parseInt((window.screen.height)/2) +',left='+ parseInt((window.screen.width)/3));
+	 win.focus();
+	
+	}
+</script> 
+  </head>
+<body class="dashboard-page">   
+   
+    <div id="main"> 
+    <!--#include file="header.htm"-->
+    <!--#include file="leftmenu.htm"-->
+     <section id="content_wrapper">
+       <header id="topbar" class="alt">
+          <div class="topbar-left">
+            <ol class="breadcrumb">
+              <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
+              <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="crumb-link"><a href="accountmodel.php">專案帳款模式管理</a></li>
+              <li class="crumb-link"> 添加專案帳款模式</li>
+            </ol><br>
+<br>
+          </div>         
+        </header>         
+        <div class="panel-body pn">     
+        <section id="content" class="animated fadeIn">         
+          <div class="content-header">
+            <h2><b class="text-primary">專案帳款模式添加</h2>
+            
+          </div>
+          <div class="mw1000 center-block">
+           
+            <div class="admin-form">
+               <form id="form-wizard" method="post" action="">
+			  
+                <div class="wizard steps-bg steps-left">                 
+                  <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 專案帳款模式</h4>
+                  <section class="wizard-section">
+				  <div class="section">
+                     <label for="menugroup" class="field-label col-md-2 text-right">專案名稱</label> 
+                       <div class="section col-md-10" >                     
+                         <input type="hidden" id="projectnum" name="projectnum">
+                         <input type="text" id="projectname" name="projectname" class="gui-input" style="width:50%"/>
+                        <button class="button btn-primary" type="button" onclick="javascript:openwindow('chooseproject.php?getname=projectname&getid=projectnum');"> 挑選</button>
+                      </div>
+					 </div>
+					  <div class="section">
+                     <label for="moneycategory" class="field-label col-md-2 text-right">款項類別</label>
+					  <div class="section col-md-10" >
+                      <label class="field select">
+                        <select name="moneycategory" id="moneycategory">
+                         <!--$moneycategory_list as $ml1-->
+						  <option value="{ml1['id']}">{ml1['name']}</option>   
+						<!--end-->
+                        </select><i class="arrow double"></i>
+                           </label> 
+                      </div>
+					   </div>
+				  <div class="section">
+                     <label for="paymentcategory" class="field-label col-md-2 text-right">支付類別</label>
+					  <div class="section col-md-10" >
+                      <label class="field select">
+                        <select name="paymentcategory" id="paymentcategory">
+                         <!--$paymentcategory_list as $pl1-->
+						  <option value="{pl1['id']}">{pl1['name']}</option>   
+						<!--end-->
+                        </select><i class="arrow double"></i>
+                           </label> 
+						    </div>
+                      </div>
+                   <div class="section">
+                      <label for="percentage" class="field-label col-md-2 text-right">帳款百分比</label>
+					   <div class="section col-md-10" >
+                      <label for="percentage" class="field prepend-icon">
+                        <input id="percentage" type="text" name="percentage" class="gui-input" value="" placeholder="%"> 
+                        <label for="percentage" class="field-icon"><i class="fa fa-user"></i></label>
+                      </label>
+					   </div>
+                    </div>  
+                    <div class="section">
+                      <label for="closingdate" class="field-label col-md-2 text-right">結帳日</label>
+					  <div class="section col-md-10" >
+                      <label for="closingdate" class="field prepend-icon">
+                        <input id="closingdate" type="text" name="closingdate" class="gui-input">
+                        <label for="closingdate" class="field-icon"><i class="fa  fa-building-o" placeholder="1-31"></i></label>
+                      </label>
+					  </div>
+                    </div>					
+					<div class="section">
+                      <label for="yourdate" class="field-label col-md-2 text-right">請款日</label>
+					  <div class="section col-md-10" >
+                      <label for="yourdate" class="field prepend-icon">
+                        <input id="yourdate" type="text" name="yourdate" class="gui-input" placeholder="1-31">
+                        <label for="yourdate" class="field-icon"><i class="fa  fa-building-o"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					<div class="section">
+                      <label for="paymentdate" class="field-label col-md-2 text-right">支付日</label>
+					  <div class="section col-md-10" >
+                      <label for="paymentdate" class="field prepend-icon">
+                        <input id="paymentdate" type="text" name="paymentdate" class="gui-input" placeholder="1-31">
+                        <label for="paymentdate" class="field-icon"><i class="fa  fa-building-o"></i></label>
+                      </label>
+					  </div>
+                    </div>
+					
+					<div class="section">
+                      <label for="usancebooking" class="field-label col-md-2 text-right">預訂票期</label>
+					  <div class="section col-md-10" >
+                      <label for="usancebooking" class="field prepend-icon">
+                        <input id="usancebooking" type="text" name="usancebooking" class="gui-input" placeholder="1-31">
+                        <label for="usancebooking" class="field-icon"><i class="fa  fa-building-o"></i></label>
+                      </label>
+					  </div>
+                    </div>
+                  </section>
+                  <div class="actions clearfix">
+				 <ul role="menu" aria-label="Pagination">
+				      <input name="act" type="hidden" id="act" value="add" />
+					  <li>&nbsp;{alertstr}</li>
+					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存并返回列表" /></li>
+					</ul>
+					</div>
+                </div>
+              </form>
+            </div>
+          </div></div>
+        </section>
+      </section>    
+        <!--#include file="footer.htm"--> 
+		<script type="text/javascript">
+      jQuery(document).ready(function () {
+	 
+        $.validator.methods.smartCaptcha = function (value, element, param) {
+          return value == param;
+        };
+        $("#form-wizard").validate({
+          /* @validation states + elements
+           ------------------------------------------- */
+          errorClass: "state-error",
+          validClass: "state-success",
+          errorElement: "em",
+          /* @validation rules
+           ------------------------------------------ */
+          rules: {
+		    projectname: {
+              required: true
+            },	            
+           percentage:{
+              required: true
+            },
+			closingdate:{
+              required: true
+            }
+          },
+          /* @validation error messages
+           ---------------------------------------------- */
+          messages: {
+            projectname: {
+              required: '請輸入專案名稱！'
+            },	
+            
+           percentage:{
+              required: '請輸入帳款百分比！'
+            },
+			closingdate:{
+              required: '請輸入結賬日！'
+            }
+          }
+        });
+		 
+      });
+	  
+    </script>
+    </body>
+</html>

@@ -12,21 +12,7 @@
     <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,600,700%7CMontserrat:400,700">
     <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">	
-    <script type="text/javascript"> 
- 
-    function howtodo()
-		 {
-			 if(!window.confirm("確認刪除！"))
-			 {
-				 return false;
-			 }else
-			 {
-			  document.form1.submit();
-			 }
-		 }
-
-	
-</script> 
+    
   </head>
 <body class="dashboard-page">   
    
@@ -39,9 +25,10 @@
             <ol class="breadcrumb">
               <li class="crumb-active"><a href="wellcome.php">首頁</a></li>
               <li class="crumb-icon"><a href="wellcome.php"><span class="glyphicon glyphicon-home"></span></a></li>
-              <li class="crumb-link"><a href="qc_list.php">報價單</a></li>
-              <li class="crumb-trail">報價單清單</li>
-			  
+              <li class="crumb-link"><a href="moneycategory.php">款項類別</a></li>
+              <li class="crumb-trail">款項類別管理</li>
+			  <li class="crumb-link"> <input name="btnadd"  class="addbtn"type="button" value="添加款項類別"  onclick="javascript:location.href='addmoneycategory.php';"/></li>
+           
             </ol>
           </div>
         
@@ -52,30 +39,24 @@
 			  <table id="message-table" class="table admin-form theme-warning tc-checkbox-1">
                <tr>
     <th class="w50">操作</th>
-   <th class="w200">報價單編號</th>
-   <th class="w200">專案名稱</th>   
- <th class="w200">階段</th>   
-	<th class="w300">對象單位</th>	
-	<th class="w300">我方單位</th>
-	
+   <th class="w250">款項類別名稱</th>  
+     <th>排序</th>
+	 <th class="text-right">刪除</th>
            </tr>
                           </thead>
 						   <tbody>
                  
-     <!--$qc_list as $nl-->
+     <!--$moneycategory_list as $nl-->
   <tr >
-    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="列印設定"  onclick="location.href='previewcheck.php?qc_no={nl['qc_no']}'"/></td>
-   <td class="fs15 fw600">{nl['qc_no']}&nbsp;</td>
-    <td class="va-m fw600 text-muted">{nl['projectname']}</td>
-    <td class="va-m fw600 text-muted">{nl['stage']}</td>
-	<td >{nl['unitname']}&nbsp;</td>
-    <td>{nl['ourunitname']}&nbsp;</td>
-
-	  </tr>  
+    <td class="fs15 fw600"><input name="edit" type="button"  id="button" value="編輯"  onclick="location.href='editmoneycategory.php?id={nl['id']}&page={page}'"/></td>
+   <td>{nl['name']}&nbsp;</td>    
+     <td>{nl['squee']}&nbsp;</td>
+	 <td class="fs15 fw600 text-right"><input name="delbtn" type="button"  id="button" value="刪除"  onclick="location.href='moneycategory.php?act=del&id={nl['id']}'"/></td>
+    </tr>  
   <!--end-->
        </tbody>
        
-        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
+        <tr ><td colspan="5" align="right">{pageinfo} </td></tr>
 </table></form>
        </section>     
     <!--#include file="footer.htm"-->    

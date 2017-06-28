@@ -2,7 +2,7 @@
 <html>
 <!--dir:assets,jade,plugins,documentation-->
   <head>  
-    <title>挑選報價單號</title>
+    <title>挑選原物料單位</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -15,11 +15,11 @@
    <script type="text/javascript">  
    function searchform()
 	 {
-		 $("#searchget").load("choosemf_qc.php?getid={getid}&getname={getname}&searchtitle="+encodeURIComponent($("#searchtitle").val())+"&searchnum="+encodeURIComponent($("#searchnum").val())+"&n="+Math.random()+" #searchget");	
+		 $("#searchget").load("chooseprdtunit.php?getid={getid}&getname={getname}&searchtitle="+encodeURIComponent($("#searchtitle").val())+"&searchnum="+encodeURIComponent($("#searchnum").val())+"&n="+Math.random()+" #searchget");	
 	}
    function getopenervalue(val1,val2)
-   {      
-      window.opener.$("#{getid}").val(val1);   
+   {     
+      window.opener.$("#{getid}").val(val1);
 	 window.opener.$("#{getname}").val(val2);
 	 window.close();
    }	
@@ -35,14 +35,13 @@
               <div class="panel">
             
          <div class="panel-footer">
-          專案名稱：
+         原物料名稱：
            <input name="searchtitle" type="text" id="searchtitle" size="12" prdt="16"/>
-		  
+		  原物料編號:<input name="searchnum" type="text" id="searchnum" size="12" prdt="16"/>
 			<input name="btnserch" id="btnserch1" type="button" class="button btn-primary"  value="搜尋" onclick="javascript:searchform()" />
 </div> 
               </div>
             </div>	
-  
   <div id="searchget">	   
     <div id="invoice-table" class="row">
                 <div class="col-md-12">
@@ -52,27 +51,29 @@
 			  <table  class="table">
              <thead> 
 			 <tr>
-      <th class="w100">序號</th>
-    <th class="w250">報價單號</th> 
-    <th class="w250">專案名稱</th> 
-    <th class="w150">階段狀態</th> 	
-     <th >挑選</th>
+      <th class="w50 text-right">序號</th>
+	 <th class="w150">原物料編號</th>
+    <th class="w250">原物料名稱</th>
+     <th class="w150">原物料單位</th>
+	 <th class="w150">是否常用單位</th>
+     <th class="w50">挑選</th>
            </tr>
                           </thead>
 						   <tbody>
                  
-      <!--$mf_qc_list as $nl-->
-   <tr>
-     <td>{nl['k']}&nbsp;</td>  
-     <td class="va-m fw600 text-muted">{nl['qc_no']}</td>	 
-    <td class="va-m fw600 text-muted">{nl['projectname']}</td> 
-    <td class="va-m fw600 text-muted">{nl['stage']}</td> 	
-	 <td class="fs15 fw600 text-muted"><input name="delbtn" type="button"  id="button" value="選擇" onclick="javascript:getopenervalue('{nl['projectnum']}','{nl['qc_no']}')" /></td>
+      <!--$product_list as $nl-->
+  <tr>
+     <td class="text-right">{nl['k']}&nbsp;</td>
+    <td class="va-m fw600 text-muted">{nl['productno']}&nbsp;</td>
+    <td class="va-m fw600 text-muted">{nl['productname']}</td>
+    <td>{nl['unit']}&nbsp;</td>  
+    <td>{nl['iscommon']}&nbsp;</td>   	
+	 <td class="fs15 fw600 text-left"><input name="delbtn" type="button"  id="button" value="選擇" onclick="javascript:getopenervalue('{nl['id']}','{nl['unit']}')" /></td>
     </tr>  
   <!--end-->
        </tbody>
        
-        <tr ><td colspan="3" align="right">{pageinfo} </td></tr>
+        <tr ><td colspan="6" align="right">{pageinfo} </td></tr>
 </table>
 </form>
       </div></div> 
