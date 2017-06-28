@@ -85,7 +85,7 @@ if($act=="add")
 				 
 		 }
 	 }
-	header("Location:preview_qc.php?qc_no=$qc_no&class_no=$class_no&system_id=$system_id");
+	header("Location:preview_qc.php?qc_no=$qc_no");
 		
 }
 $tl->set_file('addtf_qc_product');

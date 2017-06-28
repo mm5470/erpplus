@@ -18,7 +18,7 @@ $searchtitle=$_GET['searchtitle'];
 if($act=="del")
 	{
 		$delid=$_GET["id"];		
-	    $sqld="delete from mk_mf_qc where id ='".$delid."'";
+	    $sqld="delete from mk_projectmonitor_model where id ='".$delid."'";
 	    $db->query($sqld);
 		
 	}
@@ -26,8 +26,18 @@ if($act=="del")
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 }
-	  $sqlstr="select mk_mf_qc.*,mk_project.name as projectname  from mk_mf_qc left join mk_project on mk_project.projectnum=mk_mf_qc.projectnum 	  
-	  order by mk_mf_qc.id desc";
+	  $sqlstr="SELECT
+mk_groupunit.productno,
+mk_product.productname,
+mk_groupunit.id,
+mk_groupunit.groupunitid,
+mk_groupunit.unit,
+mk_groupunit.reducedqty,
+mk_groupunit.iscommon
+FROM
+mk_groupunit
+LEFT JOIN mk_product ON mk_groupunit.productno = mk_product.productno
+ order by  mk_groupunit.groupunitid desc,mk_groupunit.productno desc,mk_groupunit.id desc";
 	 // echo $sqlstr;
 	  if (isset($_GET['total'])) {
 	  	$total = $_GET['total'];
@@ -46,33 +56,17 @@ if (isset($_GET['page'])) {
 		$query = $db->query($sql);
 	}
 	//echo $sql;
-	$qc_list = array();    
-	while($qc= $db->fetch_array($query))
+	$groupunit_list = array();    
+	while($groupunit= $db->fetch_array($query))
 	{	
-		$sqlu="select name from mk_unit where id='".$qc['unitno']."'";
-		//echo $sqlu;
-		$rsu=$db->rows($sqlu);
-		
-		$sqlour="select name from mk_unit where id='".$qc['ourunitno']."'";
-		//echo $sqlour;
-		$rsour=$db->rows($sqlour);
-		switch($qc['stage'])
-		{
-			case 1:$stagename="報價(建築師)";break;
-			case 2:$stagename="報價(營造發包)";break;
-			case 3:$stagename="簽約";break;
-		}
-		
-		$qc["stagename"]=$stagename;
-		$qc["unitname"]=$rsu["name"];
-		$qc["ourunitname"]=$rsour["name"];
-		$qc_list[] = $qc;
+		if($groupunit['iscommon']=="T"){$groupunit['iscommon']="是";}else{$groupunit['iscommon']="否";}
+		$groupunit_list[] = $groupunit;
 	}
-	$phpfile="qc_list.php?page=";	
+	$phpfile="groupunit.php?page=";	
 	$pagearray=pagenumstr($page,$total,$phpfile,$pagenum,$pagelen);
     $pageinfo=$pagearray['pagecode'];		
 	
-$tl->set_file('qc_list');
+$tl->set_file('groupunit');
 $tl->n();
 $tl->p();
 $db->close();

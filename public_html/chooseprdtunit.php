@@ -13,22 +13,25 @@ $tl = new template();
 $page=1;
 $pagenum=16;
 $pagelen=5;
-$act=$_GET["act"];
 $searchtitle=$_GET['searchtitle'];
-if($act=="del")
-	{
-		$delid=$_GET["id"];		
-	    $sqld="delete from mk_mf_qc where id ='".$delid."'";
-	    $db->query($sqld);
-		
-	}
-
+$searchnum=$_GET['searchnum'];
+$getid=trim($_GET['getid']);
+$getname=trim($_GET['getname']);
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 }
-	  $sqlstr="select mk_mf_qc.*,mk_project.name as projectname  from mk_mf_qc left join mk_project on mk_project.projectnum=mk_mf_qc.projectnum 	  
-	  order by mk_mf_qc.id desc";
-	 // echo $sqlstr;
+	  $sqlstr="SELECT
+mk_product.productname,
+mk_groupunit.productno,
+mk_groupunit.id,
+mk_groupunit.unit,
+mk_groupunit.iscommon
+FROM
+mk_groupunit
+LEFT JOIN mk_product ON mk_product.productno = mk_groupunit.productno where 1=1 ";
+	   if($searchtitle<>""){$sqlstr=$sqlstr." and mk_product.productname like '%".$searchtitle."%'";}
+	  if($searchnum<>""){$sqlstr=$sqlstr." and mk_groupunit.productno='".$searchnum."'";}
+	  $sqlstr=$sqlstr." order by  id desc";
 	  if (isset($_GET['total'])) {
 	  	$total = $_GET['total'];
 		}
@@ -46,33 +49,17 @@ if (isset($_GET['page'])) {
 		$query = $db->query($sql);
 	}
 	//echo $sql;
-	$qc_list = array();    
-	while($qc= $db->fetch_array($query))
-	{	
-		$sqlu="select name from mk_unit where id='".$qc['unitno']."'";
-		//echo $sqlu;
-		$rsu=$db->rows($sqlu);
-		
-		$sqlour="select name from mk_unit where id='".$qc['ourunitno']."'";
-		//echo $sqlour;
-		$rsour=$db->rows($sqlour);
-		switch($qc['stage'])
-		{
-			case 1:$stagename="報價(建築師)";break;
-			case 2:$stagename="報價(營造發包)";break;
-			case 3:$stagename="簽約";break;
-		}
-		
-		$qc["stagename"]=$stagename;
-		$qc["unitname"]=$rsu["name"];
-		$qc["ourunitname"]=$rsour["name"];
-		$qc_list[] = $qc;
+	$product_list = array();    
+	while($product= $db->fetch_array($query))
+	{	$kk++;	
+        $product["k"]=$kk;
+		$product_list[] = $product;
 	}
-	$phpfile="qc_list.php?page=";	
+	$phpfile="chooseprdtunit.php?searchtitle=$searchtitle&searchnum=$searchnum&getid=$getid&getname=$getname&page=";	
 	$pagearray=pagenumstr($page,$total,$phpfile,$pagenum,$pagelen);
     $pageinfo=$pagearray['pagecode'];		
 	
-$tl->set_file('qc_list');
+$tl->set_file('chooseprdtunit');
 $tl->n();
 $tl->p();
 $db->close();

@@ -31,16 +31,14 @@ if($act=="add")
 {
 
 //INSEART
-$InsertSQL = sprintf("INSERT INTO  mk_tf_qc_system (`id`,`qc_no`,`class_no`,`systemmodelid`,`systemmodel`,`qty`,`unit`,`price`,`total`,`valid`) VALUES (%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s )",
+$InsertSQL = sprintf("INSERT INTO  mk_tf_qc_system (`id`,`qc_no`,`class_no`,`systemmodelid`,`systemmodel`,`qty`,`unit`,`valid`) VALUES (%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s )",
 	 GetSQLValueString($_POST['id'],"int"),
 	 GetSQLValueString($qc_no,"text"),
 	 GetSQLValueString($class_no,"text"),
 	 GetSQLValueString($system_id,"int"),
 	  GetSQLValueString($_POST['systemmodel'],"text"),
 	 GetSQLValueString($_POST['qty'],"int"),
-	 GetSQLValueString($_POST['unit'],"text"),
-	 GetSQLValueString($_POST['price'],"nodefile"),
-	 GetSQLValueString($_POST['total'],"nodefile"),
+	 GetSQLValueString($_POST['unit'],"text"),	
 	 GetSQLValueString($_POST['valid'],"text"));
 $db->query($InsertSQL);
 			  header("Location:addtf_qc_workitem.php?qc_no=$qc_no&class_no=$class_no&system_id=$system_id");

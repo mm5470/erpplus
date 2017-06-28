@@ -13,6 +13,7 @@ switch($act)
 	case "login":
 		$loginname = $_POST['username'];
 		$loginpws = $_POST['password'];	
+		if($_SESSION['grouplist']<>""){$_SESSION['grouplist']=="";}
 		$sql="select * from mk_user where username='".$loginname."' and isopen='Y' limit 1";
 			$nums=$db->nums($sql);		
 			

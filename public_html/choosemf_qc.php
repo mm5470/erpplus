@@ -17,6 +17,7 @@ $act=$_GET["act"];
 
 $searchtitle=$_GET['searchtitle'];
 $getname=trim($_GET['getname']);
+$getid=trim($_GET['getid']);
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 }

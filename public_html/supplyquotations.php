@@ -18,7 +18,7 @@ $searchtitle=$_GET['searchtitle'];
 if($act=="del")
 	{
 		$delid=$_GET["id"];		
-	    $sqld="delete from mk_mf_qc where id ='".$delid."'";
+	    $sqld="delete from mk_supplyquotations where id ='".$delid."'";
 	    $db->query($sqld);
 		
 	}
@@ -26,8 +26,13 @@ if($act=="del")
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 }
-	  $sqlstr="select mk_mf_qc.*,mk_project.name as projectname  from mk_mf_qc left join mk_project on mk_project.projectnum=mk_mf_qc.projectnum 	  
-	  order by mk_mf_qc.id desc";
+	  $sqlstr="SELECT mk_supplyquotations.*,mk_product.productname,mk_unit.name as unitname,mk_groupunit.unit as productunit
+FROM
+mk_supplyquotations
+LEFT JOIN mk_product ON mk_supplyquotations.productno = mk_product.productno
+LEFT JOIN mk_unit on mk_unit.id=mk_supplyquotations.supplier_unitid
+LEFT JOIN mk_groupunit on mk_groupunit.id=mk_supplyquotations.quotation_unit
+ order by  mk_supplyquotations.quotationno desc,mk_supplyquotations.productno desc,mk_supplyquotations.id desc";
 	 // echo $sqlstr;
 	  if (isset($_GET['total'])) {
 	  	$total = $_GET['total'];
@@ -46,33 +51,17 @@ if (isset($_GET['page'])) {
 		$query = $db->query($sql);
 	}
 	//echo $sql;
-	$qc_list = array();    
-	while($qc= $db->fetch_array($query))
+	$supplyquotations_list = array();    
+	while($supplyquotations= $db->fetch_array($query))
 	{	
-		$sqlu="select name from mk_unit where id='".$qc['unitno']."'";
-		//echo $sqlu;
-		$rsu=$db->rows($sqlu);
-		
-		$sqlour="select name from mk_unit where id='".$qc['ourunitno']."'";
-		//echo $sqlour;
-		$rsour=$db->rows($sqlour);
-		switch($qc['stage'])
-		{
-			case 1:$stagename="報價(建築師)";break;
-			case 2:$stagename="報價(營造發包)";break;
-			case 3:$stagename="簽約";break;
-		}
-		
-		$qc["stagename"]=$stagename;
-		$qc["unitname"]=$rsu["name"];
-		$qc["ourunitname"]=$rsour["name"];
-		$qc_list[] = $qc;
+		if($supplyquotations['valid']=="T"){$supplyquotations['valid']="是";}else{$supplyquotations['valid']="否";}
+		$supplyquotations_list[] = $supplyquotations;
 	}
-	$phpfile="qc_list.php?page=";	
+	$phpfile="supplyquotations.php?page=";	
 	$pagearray=pagenumstr($page,$total,$phpfile,$pagenum,$pagelen);
     $pageinfo=$pagearray['pagecode'];		
 	
-$tl->set_file('qc_list');
+$tl->set_file('supplyquotations');
 $tl->n();
 $tl->p();
 $db->close();

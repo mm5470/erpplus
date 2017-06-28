@@ -18,7 +18,7 @@ $searchtitle=$_GET['searchtitle'];
 if($act=="del")
 	{
 		$delid=$_GET["id"];		
-	    $sqld="delete from mk_mf_qc where id ='".$delid."'";
+	    $sqld="delete from mk_projectmonitor_model where id ='".$delid."'";
 	    $db->query($sqld);
 		
 	}
@@ -26,8 +26,19 @@ if($act=="del")
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 }
-	  $sqlstr="select mk_mf_qc.*,mk_project.name as projectname  from mk_mf_qc left join mk_project on mk_project.projectnum=mk_mf_qc.projectnum 	  
-	  order by mk_mf_qc.id desc";
+	  $sqlstr="SELECT
+mk_accountmodel.id,
+mk_accountmodel.projectnum,
+mk_project.name as projectname,
+mk_moneycategory.name as moneycategoryname,
+mk_paymentcategory.name as paymentcategoryname,
+mk_accountmodel.percentage
+FROM
+mk_accountmodel
+LEFT JOIN mk_project ON mk_project.projectnum = mk_accountmodel.projectnum
+LEFT JOIN mk_moneycategory ON mk_moneycategory.id = mk_accountmodel.moneycategory
+LEFT JOIN mk_paymentcategory ON mk_paymentcategory.id = mk_accountmodel.paymentcategory
+ order by  mk_accountmodel.projectnum asc,mk_accountmodel.id desc";
 	 // echo $sqlstr;
 	  if (isset($_GET['total'])) {
 	  	$total = $_GET['total'];
@@ -46,33 +57,17 @@ if (isset($_GET['page'])) {
 		$query = $db->query($sql);
 	}
 	//echo $sql;
-	$qc_list = array();    
-	while($qc= $db->fetch_array($query))
+	$accountmodel_list = array();    
+	while($accountmodel= $db->fetch_array($query))
 	{	
-		$sqlu="select name from mk_unit where id='".$qc['unitno']."'";
-		//echo $sqlu;
-		$rsu=$db->rows($sqlu);
 		
-		$sqlour="select name from mk_unit where id='".$qc['ourunitno']."'";
-		//echo $sqlour;
-		$rsour=$db->rows($sqlour);
-		switch($qc['stage'])
-		{
-			case 1:$stagename="報價(建築師)";break;
-			case 2:$stagename="報價(營造發包)";break;
-			case 3:$stagename="簽約";break;
-		}
-		
-		$qc["stagename"]=$stagename;
-		$qc["unitname"]=$rsu["name"];
-		$qc["ourunitname"]=$rsour["name"];
-		$qc_list[] = $qc;
+		$accountmodel_list[] = $accountmodel;
 	}
-	$phpfile="qc_list.php?page=";	
+	$phpfile="accountmodel.php?page=";	
 	$pagearray=pagenumstr($page,$total,$phpfile,$pagenum,$pagelen);
     $pageinfo=$pagearray['pagecode'];		
 	
-$tl->set_file('qc_list');
+$tl->set_file('accountmodel');
 $tl->n();
 $tl->p();
 $db->close();

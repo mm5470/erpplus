@@ -13,15 +13,11 @@ if(!isset($_SESSION["username"])||$_SESSION["username"]=="")
 $act=$_POST["act"];
 $alertstr="";
 $qc_no=$_GET['qc_no'];
-$class_no=$_GET['class_no'];
-$system_id=$_GET['system_id'];
 
-     $ListSql = "select mk_mf_qc.*,mk_tf_qc_system.systemmodel as system_name,mk_tf_qc_class.class_name,mk_project.name as projectname 
-	 from mk_tf_qc_class   
-	 left join mk_mf_qc on mk_mf_qc.qc_no=mk_tf_qc_class.qc_no 
-	 left join mk_tf_qc_system on mk_tf_qc_class.class_no=mk_tf_qc_system.class_no	
+     $ListSql = "select mk_mf_qc.*,mk_project.name as projectname 
+	 from mk_mf_qc  
 	 left join mk_project on mk_project.projectnum=mk_mf_qc.projectnum
-     where mk_tf_qc_class.qc_no='".$qc_no."' and mk_tf_qc_class.class_no='".$class_no."' and mk_tf_qc_system.systemmodelid='".$system_id."'";
+     where mk_mf_qc.qc_no='".$qc_no."'";
 	$rs=$db->rows($ListSql);
 	  
      	$sqlu="select name from mk_unit where id='".$rs['unitno']."'";
@@ -43,14 +39,14 @@ $system_id=$_GET['system_id'];
 			case 2:$taxclassname="應稅內含";break;
 			case 3:$taxclassname="零稅率";break;
 		}
-	$ListSql = "select * from mk_tf_qc_workitem  where mk_tf_qc_workitem.qc_no='".$qc_no."' and  mk_tf_qc_workitem.systemmodelid='".$system_id."' and  mk_tf_qc_workitem.class_no='".$class_no."'";
-	// echo $ListSql;
+	$ListSql = "select * from mk_tf_qc_workitem  where mk_tf_qc_workitem.qc_no='".$qc_no."'";
+	 echo $ListSql;
 	 $query = $db->query($ListSql);
 	 $workitem_list = array();    
 	 while($workitem= $db->fetch_array($query))
 	   {
 		   $wk++;
-		  $ListSql2 = "select * from mk_tf_qc_product where qc_no='".$qc_no."' and  systemid='".$system_id."' and  class_no='".$class_no."' and  workitemname='".$workitem['workitemname']."' ";
+		  $ListSql2 = "select * from mk_tf_qc_product where qc_no='".$qc_no."' and  workitemname='".$workitem['workitemname']."' ";
 	       //echo $ListSql2;
 		   $query2=$db->query($ListSql2);
 		   $product_list = array();		   

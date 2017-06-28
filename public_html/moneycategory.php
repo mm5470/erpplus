@@ -18,7 +18,7 @@ $searchtitle=$_GET['searchtitle'];
 if($act=="del")
 	{
 		$delid=$_GET["id"];		
-	    $sqld="delete from mk_mf_qc where id ='".$delid."'";
+	    $sqld="delete from mk_moneycategory where id ='".$delid."'";
 	    $db->query($sqld);
 		
 	}
@@ -26,8 +26,7 @@ if($act=="del")
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
 }
-	  $sqlstr="select mk_mf_qc.*,mk_project.name as projectname  from mk_mf_qc left join mk_project on mk_project.projectnum=mk_mf_qc.projectnum 	  
-	  order by mk_mf_qc.id desc";
+	  $sqlstr="select * from mk_moneycategory order by  squee asc,id desc";
 	 // echo $sqlstr;
 	  if (isset($_GET['total'])) {
 	  	$total = $_GET['total'];
@@ -46,34 +45,18 @@ if (isset($_GET['page'])) {
 		$query = $db->query($sql);
 	}
 	//echo $sql;
-	$qc_list = array();    
-	while($qc= $db->fetch_array($query))
+	$moneycategory_list = array();    
+	while($moneycategory= $db->fetch_array($query))
 	{	
-		$sqlu="select name from mk_unit where id='".$qc['unitno']."'";
-		//echo $sqlu;
-		$rsu=$db->rows($sqlu);
 		
-		$sqlour="select name from mk_unit where id='".$qc['ourunitno']."'";
-		//echo $sqlour;
-		$rsour=$db->rows($sqlour);
-		switch($qc['stage'])
-		{
-			case 1:$stagename="報價(建築師)";break;
-			case 2:$stagename="報價(營造發包)";break;
-			case 3:$stagename="簽約";break;
-		}
-		
-		$qc["stagename"]=$stagename;
-		$qc["unitname"]=$rsu["name"];
-		$qc["ourunitname"]=$rsour["name"];
-		$qc_list[] = $qc;
+		$moneycategory_list[] = $moneycategory;
 	}
-	$phpfile="qc_list.php?page=";	
+	$phpfile="moneycategory.php?page=";	
 	$pagearray=pagenumstr($page,$total,$phpfile,$pagenum,$pagelen);
     $pageinfo=$pagearray['pagecode'];		
 	
-$tl->set_file('qc_list');
+$tl->set_file('moneycategory');
 $tl->n();
-$tl->p();
+$tl->p('moneycategory');
 $db->close();
 ?>
