@@ -37,7 +37,7 @@
           <div class="mw1000 center-block">
            
             <div class="admin-form">
-              <form id="form-wizard" method="post" action="">			  
+              <form id="form-wizard" method="post" action="preview_qc.php">			  
                 <div class="wizard steps-bg steps-left">                 
                   <h4 class="wizard-section-title"><i class="fa fa-user pr5"></i> 列印設置</h4>
                  <section class="wizard-section">
@@ -56,7 +56,7 @@
          <label>&nbsp;&nbsp;&nbsp; &nbsp;<input name="systemunit" type="checkbox" id="systemunit"  value="Y" />     
          顯示系統單位</label>
 		  <label>&nbsp;&nbsp;&nbsp; &nbsp;<input name="systemprice" type="checkbox" id="systemprice"  value="Y" />     
-         顯示工項單價</label>
+         顯示系統單價</label>
        </div>  
         <div class="section">	   
          <input name="isworkitem" type="checkbox" id="isworkitem"  value="Y"/> <label>顯示工項名稱與否</label>     
@@ -83,10 +83,9 @@
                   </section>
                  <div class="actions clearfix">
 				 <ul role="menu" aria-label="Pagination">
-				      <input name="act" type="hidden" id="act" value="add" />
-					  <li>&nbsp;{alertstr}</li>
-					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
-					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="保存並返回列表" /></li>
+				   <input name="qc_no" type="hidden" id="qc_no" value="{qc_no}" />
+				    <li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="彈出列印頁面" /></li>
 					</ul>
 					</div>
                 </div>

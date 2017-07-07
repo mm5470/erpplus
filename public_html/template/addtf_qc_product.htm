@@ -44,6 +44,12 @@
   function delTr2(){
      delTr('ckb');
   }
+  function gotostr(gotostr){     
+      var trHtml='<input name="gotostr" type="hidden" value="'+gotostr+'" />';
+      $("#laststr").after(trHtml);
+	  //alert(trHtml);
+      $("form").submit();
+  }
   </script>
   </head>
 <body class="dashboard-page">   
@@ -132,10 +138,11 @@
        
         </section>
                  <div class="actions clearfix">
-				 <ul role="menu" aria-label="Pagination">
+				 <ul role="menu" aria-label="Pagination" id="laststr">
 				     <input name="act" type="hidden" id="act" value="add" />
-					  <li>&nbsp;{alertstr}{InsertSQL}</li>
-					<li class="" aria-disabled="false"><input name="Reset" type="reset" class="btn" value="取消" /></li>					
+					 <li>&nbsp;{alertstr}{gotostr}</li>
+					<li><input name="gotosystem" type="button" class="btn" value="繼續添加新系統" onclick="gotostr('Q')" /></li>
+                    <li><input name="gotoclass" type="button" class="btn" value="繼續添加新類別" onclick="gotostr('C')"/></li>					
 					<li style="display: inline-block;" aria-hidden="false"> <input name="input" type="submit" class="btn" value="完成報價單" /></li>
 					</ul>
 					</div>

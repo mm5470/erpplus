@@ -92,34 +92,67 @@
                 <div class="col-md-12">
                   <div class="table-responsive">
                     <table class="table table-striped">
-                       <!--$workitem_list as $wl1=>$wl-->					  
-						 <thead>
-						 <tr>
-                           <th colspan="6">{wl['k']}.工項名稱：{wl['workitemname']}</th>                         
-                        </tr>		  
-                         	
+                      <thead>
 						  <tr>
                           <th>&nbsp;</th>
-                          <th>原物料名稱</th>
+                          <th>工程內容摘要</th>
                           <th>數量</th>
                           <th style="width: 135px;">單位</th>
                           <th>單價</th>
-                          <th class="text-right pr10">小計</th>
+                          <th class="text-right pr10">總價</th>
                         </tr>
                       </thead>
                       <tbody>
-					   <!--$wl['sub'] as $prdt1=>$pt-->
-                        <tr>
-                          <td>&nbsp;</td>
-                          <td>{pt['productname']}</td>
-                          <td>{pt['qty']}</td>
-                          <td>{pt['unit']}</td>
-                          <td>{pt['price']}</td>
-                          <td class="text-right pr10">{pt['total']}</td>
-                        </tr>
-						<!--end-->                       
+					   <!--$class_list as $cl1=>$cl-->
+						   <!--IF[$isclass=='Y']--> 
+						   <tr class="table admin-form theme-warning tc-checkbox-1 fs13">
+							   <th>{cl['k']}</th>
+							   <th>{cl['class_name']}</th>
+							   <th>&nbsp;</th>
+							   <th>&nbsp;</th>
+							   <th>&nbsp;</th>
+							   <th class="text-right pr10"></th>
+							</tr>
+							<!--END-->
+						 <!--$cl['sub'] as $system1=>$st-->
+							  <!--IF[$issystem=='Y']-->  
+							   <tr class="title">
+							   <td>{st['k']}</td>
+							   <td>{st['systemmodel']}</td>
+							   <td><!--IF[$systemqty=='Y']-->{st['qty']}<!--END-->&nbsp;</td>
+							   <td><!--IF[$systemunit=='Y']-->{st['unit']}<!--END-->&nbsp;</td>
+							   <td><!--IF[$systemprice=='Y']-->{st['price']}<!--END-->&nbsp;</td>
+							   <td class="text-right pr10"><!--IF[$systemprice=='Y']-->{st['total']}<!--END-->&nbsp;</td>
+							   </tr>
+							   <!--END-->
+						    <!--$st['sub'] as $workitem1=>$wk-->
+								   <!--IF[$isworkitem=='Y']-->
+								   <tr>
+								   <td>{wk['k']}</td>
+								   <td>{wk['workitemname']}</td>
+								   <td><!--IF[$workitemqty=='Y']-->{wk['qty']}<!--END-->&nbsp;</td>
+								   <td><!--IF[$workitemunit=='Y']-->{wk['unit']}<!--END-->&nbsp;</td>
+								   <td><!--IF[$workitemprice=='Y']-->{wk['price']}<!--END-->&nbsp;</td>
+								   <td class="text-right pr10"><!--IF[$workitemprice=='Y']-->{wk['total']}<!--END-->&nbsp;</td>
+								   </tr>
+								   <!--END-->
+							   <!--$wk['sub'] as $product1=>$pt-->
+							     <!--IF[$isproduct=='Y']-->
+								  <tr>
+								   <td>&nbsp;</td>
+								   <td>{pt['k']}.{pt['productname']}</td>
+								   <td><!--IF[$productprice=='Y']-->{pt['qty']}<!--END-->&nbsp;</td>
+								   <td><!--IF[$productprice=='Y']-->{pt['unit']}<!--END-->&nbsp;</td>
+								   <td><!--IF[$productprice=='Y']-->{pt['price']}<!--END-->&nbsp;</td>
+								   <td class="text-right pr10"><!--IF[$productprice=='Y']-->{wk['total']}<!--END-->&nbsp;</td>
+								   </tr>
+								 <!--END--> 
+							    <!--end-->
+							 <!--end-->
+						   <!--end-->                                  
                       </tbody>
-					  <!--end-->
+					  <!--end-->				          
+                     
                     </table>
                   </div>
                 </div>
