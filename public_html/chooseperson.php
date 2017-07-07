@@ -11,7 +11,7 @@ $db=new Dirver();
 $db->DBLink($db_server,$db_username,$db_password,$db_name);
 $tl = new template();
 $page=1;
-$pagenum=16;
+$pagenum=10;
 $pagelen=5;
 $searchtitle=$_GET['searchtitle'];
 $getid=trim($_GET['getid']);

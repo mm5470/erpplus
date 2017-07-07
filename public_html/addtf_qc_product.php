@@ -61,12 +61,14 @@ if($act=="add")
 	  $price=$_POST["price"];
 	  $total=$_POST["total"];
 	  $valid=$_POST["valid"];
+	  $gotostr=$_POST['gotostr'];
+	
 	  if($productname==null)
 	  {
 		  header("Location:preview_qc.php?qc_no=$qc_no&class_no=$class_no&system_id=$system_id");
 	  }
 	  else{
-	 foreach($productname as  $k=>$v)
+	  foreach($productname as  $k=>$v)
 		 {	    
 					//INSEART
 					$InsertSQL = sprintf("INSERT INTO  mk_tf_qc_product (`qc_no`,`class_no`,`systemid`,`workitemname`,`productno`,`productname`,`qty`,`unit`,`price`,`total`) VALUES (%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s  )",
@@ -85,7 +87,10 @@ if($act=="add")
 				 
 		 }
 	 }
-	header("Location:preview_qc.php?qc_no=$qc_no");
+    if($gotostr=="C"){header("Location:addtf_qc_class.php?qc_no=$qc_no");}
+else if($gotostr=="Q"){header("Location:addtf_qc_system.php?qc_no=$qc_no&class_no=$class_no");}
+else{header("Location:previewcheck.php?qc_no=$qc_no");}	
+	
 		
 }
 $tl->set_file('addtf_qc_product');

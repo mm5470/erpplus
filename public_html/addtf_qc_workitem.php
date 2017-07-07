@@ -49,7 +49,9 @@ if($act=="add")
 	  foreach($workitemname as  $k=>$v)
 	  {	    
 			
-			   $InsertSQL = sprintf("INSERT INTO  mk_tf_qc_workitem (`qc_no`,`class_no`,`systemmodelid`,`workitem_id`,`workitemname`,`qty`,`unit`,`price`,`total`,`valid`) VALUES (%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s )",
+			    $systemtotal=$systemtotal+$total[$k];
+				$pricetotal=$pricetotal+$price[$k];
+			    $InsertSQL = sprintf("INSERT INTO  mk_tf_qc_workitem (`qc_no`,`class_no`,`systemmodelid`,`workitem_id`,`workitemname`,`qty`,`unit`,`price`,`total`,`valid`) VALUES (%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s ,%s )",
 				 GetSQLValueString($qc_no,"text"),
 				 GetSQLValueString($class_no,"text"),
 				 GetSQLValueString($system_id,"int"),
@@ -62,7 +64,11 @@ if($act=="add")
 				 GetSQLValueString($valid,"text"));
 				 //echo $InsertSQL;
 			    $db->query($InsertSQL);
+			
 	 }
+	 $updatesystem="update mk_tf_qc_system set total='".$systemtotal."',price='".$pricetotal."'  where qc_no='".$qc_no."' and class_no='".$class_no."' and systemmodelid='".$system_id."'";
+	 $db->query($updatesystem);
+	// echo $updatesystem;
 	header("Location:addtf_qc_product.php?qc_no=$qc_no&class_no=$class_no&system_id=$system_id");
 		
 }
